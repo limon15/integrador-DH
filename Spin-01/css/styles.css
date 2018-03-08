@@ -1,0 +1,93 @@
+/* My Styles */
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-image: url(../images/background-image.png);
+}
+
+header{
+  width: 100%;
+}
+
+header nav{
+  width: 90%;
+  max-width: 1000px;
+  margin: 20px auto;
+  background: rgb(48, 126, 131);
+}
+
+.menu-bar{
+  display: none;
+}
+
+header nav ul{
+  overflow: hidden;
+  list-style: none;
+}
+
+header nav ul li{
+  float: left;
+  padding: 20px;
+  color: rgb(255, 255, 255);
+}
+
+header nav ul li a{
+  color: rgb(255, 255, 255);
+  display: block;
+  text-decoration: none;
+}
+
+header nav ul li span{
+  margin-right: 10px;
+}
+
+header nav ul li:hover{
+  background: rgb(48, 140, 131);
+}
+
+section{
+  padding: 20px;
+}
+
+@media (max-width: 800px) {
+  header nav{
+    width: 80%;
+    height: 100%;
+    left: -100%;
+    margin: 0;
+    position: fixed;
+  }
+
+  header nav ul li{
+    display: block;
+    float: none;
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    color: rgb(255, 255, 255);
+  }
+
+  .menu-bar{
+    display: block;
+    width: 100%;
+    background: rgb(223, 217, 214);
+  }
+
+  .menu-bar .bt-menu{
+    display: block;
+    padding: 20px;
+    background: rgb(48, 126, 131);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 25px;
+    box-sizing: border-box;
+  }
+
+  .menu-bar span{
+    float: right;
+    font-size: 40px;
+  }
+}
