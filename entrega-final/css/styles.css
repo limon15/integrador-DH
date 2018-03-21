@@ -396,6 +396,10 @@ footer .social a{
     flex-direction: column;
   }
 
+  .bienvenida {
+    display: none;
+  }
+
   .wrap details{
     width: 300px;
   }
