@@ -347,6 +347,16 @@ template {
   padding: 0;
   box-sizing: border-box;
 }
+
+* h1, h2, h3, h4, h5, h6, summary {
+  font-family: 'Montserrat', sans-serif;
+}
+
+* p, a, ul{
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+}
 .contenedor{
   background: #ccc;
   width: 90%;
@@ -361,7 +371,7 @@ template {
 }
 
 body{
-  background-image: url(../images/background-image.png);
+  background-color: rgba(0, 204, 173, 0.46);
 }
 
 header{
@@ -542,10 +552,151 @@ footer .social a{
   justify-content: space-between;
 }
 
+/*Estilos faq */
+.wrap {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background-image: url(../images/bg-image.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #00ccad;
+}
+
+.FAQS {
+  padding: 5px;
+  margin-bottom:5px;
+}
+
+.wrap details{
+  overflow: hidden;
+  border: 0.1px solid #00ccad;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  background-color: #EEE;
+
+}
+.wrap summary{
+  color: #484f4d;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.wrap details summary::-webkit-details-marker {
+  color: #7fe4bc;
+}
+
+.wrap p, a, span, li{
+  font-size: 14px;
+  color: #666;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.wrap ul {
+    margin: 0 0 0 2em;
+}
+
+.listaFAQ {
+    counter-reset: li;
+    list-style: none;
+    *list-style: decimal;
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+.listaFAQ ul {
+    margin: 0 0 0 2em;
+}
+
+.wrap li{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em .5em 0 .1em;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;
+}
+
+.listaFAQ li:hover{
+    background: #eee;
+}
+
+.listaFAQ li:hover:before{
+    transform: rotate(360deg);
+}
+
+.listaFAQ li:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #7fe4bc;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}
+
+.wrap h2{
+  color: #FFF;
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.wrap h3{
+  color: #FFF;
+  font-size: 18px;
+  padding-top: 10px;
+  text-align: center;
+  justify-content: center;
+}
+#logo{
+  background: url(../images/logo-farmacia.png); no-repeat;
+  background-position: 0 -224px;
+  width: 60px;
+  height: 30px;
+  margin-top: 11px;
+}
+.image-bottom {
+  background-image: url(../images/farma1-copia.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #00ccad;
+  height: 200px;
+  padding: 10px;
+  font-size: 18px;
+}
+
 @media screen and (max-width: 800px) {
-  .contenedor, header{
+  .contenedor, .wrap header{
     flex-direction: column;
   }
+
+  .wrap details{
+    width: 300px;
+  }
+  .wrap p, a, span, li{
+  padding: 5px;
 
   header{
     padding: 0;
@@ -570,11 +721,16 @@ footer .social a{
 }
 
 @media screen and (max-width: 600px) {
-  aside{
+  aside {
     flex-direction: column;
   }
+.wrap details{
+  width: 300px;
+  }
 
-  footer{
+.wrap p, a, span, li{
+  padding: 2px;
+}
+  footer {
     justify-content: space-around;
   }
-}
