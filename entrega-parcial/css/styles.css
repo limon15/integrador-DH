@@ -4,21 +4,54 @@
 
 body{
   margin: 0;
-  font: 'sans-serif';
+  font-family: 'Monserrat', 'sans-serif';
   background-image: url(../images/bg-image.jpg);
 }
 
+h1, h2, h3, h4, h5, h6, a, summary {
+  font-family: 'Montserrat', 'sans-serif';
+}
+
+input, .form-link, .input-100, p, span, li {
+  font-family: 'Open Sans', 'sans-serif';
+}
+
+.bienvenida {
+  min-height: 100px;
+  background: rgba(0, 204, 173, 0.5);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-bottom: solid 6px rgb(40, 162, 125);
+  }
+.bienvenida-titulo {
+  font-size: 40px;
+}
+
+.bienvenida-parrafo, .bienvenida-a {
+  font-size: 30px;
+  font-family: "Montserrat";
+  color: #fff;
+  margin: 0 30px;
+  text-decoration: none;
+  line-height: 2;
+}
+
+.bienvenida-a:hover {
+  background-color: rgba(40, 168, 149, 0.3);
+  border-radius: 5px;
+}
 
 .form-registrar, .preguntas-frecuentes{
   width: 100%;
   min-height: 500px;
   margin: auto;
-  background: rgba(106,34,92,0.2);
+  background: rgba(34, 106, 84, 0.2);
   margin-top: -25px;
 }
 
 .form-titulo{
-  background: rgb(0, 178, 255);
+  background: rgba(0, 178, 255, 0.5);
   color: #fff;
   padding: 20px;
   text-align: center;
@@ -39,7 +72,7 @@ input{
   margin-bottom: 15px;
   padding: 15px;
   font-size: 16px;
-  border-radius: 3px;
+  border-radius: 10px;
   border: 1px solid darkgray;
 }
 
@@ -47,7 +80,7 @@ input{
   width: 48%;
 }
 
-.input-100{
+.input-100 {
   width: 100%;
 }
 
@@ -86,12 +119,11 @@ header{
 
 header .logo{
   color: #fff;
-  font-size: 30px;
 }
 
 header .logo img{
   width: 100px;
-  vertical-align: top;
+  align-items: center;
 }
 
 header .logo a{
@@ -100,6 +132,8 @@ header .logo a{
   color: #fff;
   text-decoration: none;
   line-height: 70px;
+  font-size: 30px;
+  text-align: center;
 }
 
 header nav{
@@ -112,7 +146,7 @@ header nav{
 }
 
 header nav a{
-  background: #25a869;
+  background: rgba(0, 204, 173, 0.69);
   color: #fff;
   text-align: center;
   text-decoration: none;
@@ -143,7 +177,7 @@ footer{
 }
 
 footer .links{
-  background: #25a869;
+  background: rgba(0, 204, 173, 0.69);
   display: flex;
   flex-wrap: wrap;
 }
@@ -160,14 +194,11 @@ footer .links a:hover{
   background: #83ddab;
 }
 
-footer .social{
-  background: #25a869;
-}
-
 footer .social a{
   color: #fff;
+  font-size: 25px;
   text-decoration: none;
-  padding: 10px;
+  margin: 0 10px;
   display: inline-block;
 }
 
@@ -194,12 +225,12 @@ footer .social a{
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  background-image: url(../images/bg-image.jpg);
+  /*background-image: url(../images/bg-image.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
-  background-color: #00ccad;
+  background-size: cover;*/
+  background-color: rgba(0, 204, 173, 0.69);
 }
 
 .FAQS {
@@ -216,6 +247,7 @@ footer .social a{
   margin-right: auto;
   width: 500px;
   background-color: #EEE;
+  border-radius: 10px;
 
 }
 .wrap summary{
@@ -223,6 +255,7 @@ footer .social a{
   font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
+
 }
 
 .wrap details summary::-webkit-details-marker {
@@ -321,13 +354,19 @@ footer .social a{
   background-color: #00ccad;
   height: 200px;
   padding: 10px;
-  font-size: 18px;
 }
 
 /* Media queries */
 @media screen and (max-width: 800px) {
-  .contenedor, header{
+  .contenedor, .wrap header{
     flex-direction: column;
+  }
+
+  .wrap details{
+    width: 300px;
+  }
+  .wrap p, a, span, li{
+  padding: 5px;
   }
 
   header{
@@ -355,6 +394,14 @@ footer .social a{
 @media screen and (max-width: 600px) {
   aside{
     flex-direction: column;
+  }
+
+  .wrap details{
+    width: 300px;
+  }
+
+  .wrap p, a, span, li{
+    padding: 2px;
   }
 
   footer{

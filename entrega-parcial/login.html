@@ -3,26 +3,34 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <title>Formulario de registro</title>
   </head>
   <body>
+
   <div class="container">
     <header>
 			<div class="logo">
 				<img src="images/logo-farmacia.png" width="150" alt="">
-				<a href="#">Farmacia de Turno</a>
+				<a href="#">FARMACIAS DE TURNO</a>
 			</div>
 			<nav>
-				<a href="#">Inicio</a>
-				<a href="#">Blog</a>
-				<a href="#">Proyectos</a>
-				<a href="#">Contacto</a>
+				<a href="./login.html">Inicio</a>
+				<a href="#Ayuda">Ayuda</a>
+				<a href="#">Descuentos</a>
+	      <a href="#">Quiénes somos</a>
+        <a href="./ingresar.html">Iniciar sesión</a>
 			</nav>
 		</header>
-
+    <div class="bienvenida">
+      <h2 class="bienvenida-titulo">¡BIENVENIDO!</h2>
+        <p class="bienvenida-parrafo">¿Buscás la farmacia de turno más cercada a tu domicilio?
+        <br>Estás es el lugar correcto. Pero antes que nada, <a class="bienvenida-a" href="ingresar.html">iniciá sesión</a> o <a  class="bienvenida-a" href="#CrearCuenta">registrate.</a></p>
+    </div>
+    <a name="CrearCuenta" id="c"></a>
     <form action="registrar.php" method="post" class="form-registrar">
       <h2 class="form-titulo">CREA UNA CUENTA</h2>
       <div class="contenedor-inputs">
@@ -36,7 +44,7 @@
         <p class="form-link">¿Ya tienes una cuenta?<a href="ingresar.html">Ingresa aquí</a></p>
       </div>
     </form>
-
+    <a name="Ayuda" id="a"></a>
     <section class="preguntas-frecuentes">
       <div class="wrap">
       <h2 class="FAQS">Preguntas frecuentes</h2>
@@ -74,14 +82,15 @@
 
     <footer>
 			<section class="links">
-				<a href="#">Inicio</a>
-				<a href="#">Blog</a>
-				<a href="#">Proyectos</a>
-				<a href="#">Contacto</a>
+        <a href="./login.html">Inicio</a>
+        <a href="#Ayuda">Ayuda</a>
+        <a href="#">Descuentos</a>
+        <a href="#">Quiénes somos</a>
+        <a href="./ingresar.html">Iniciar sesión</a>
 			</section>
 			<div class="social">
-				<a href="#">Facebook</a>
-				<a href="#">Twitter</a>
+				<a href="#"><i class="ion-social-facebook-outline"></i></a>
+        <a href="#"><i class="social ion-social-twitter-outline"></i></a>
 			</div>
 		</footer>
   </div>
