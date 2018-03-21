@@ -1,0 +1,414 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  font-family: 'Monserrat', 'sans-serif';
+  background-image: url(../images/bg-image.jpg);
+}
+
+h1, h2, h3, h4, h5, h6, a, summary {
+  font-family: 'Montserrat', 'sans-serif';
+}
+
+input, .form-link, .input-100, p, span, li {
+  font-family: 'Open Sans', 'sans-serif';
+}
+
+.bienvenida {
+  min-height: 100px;
+  background: rgba(0, 204, 173, 0.5);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-bottom: solid 6px rgb(40, 162, 125);
+  }
+.bienvenida-titulo {
+  font-size: 40px;
+}
+
+.bienvenida-parrafo, .bienvenida-a {
+  font-size: 30px;
+  font-family: "Montserrat";
+  color: #fff;
+  margin: 0 30px;
+  text-decoration: none;
+  line-height: 2;
+}
+
+.bienvenida-a:hover {
+  background-color: rgba(40, 168, 149, 0.3);
+  border-radius: 5px;
+}
+
+.form-registrar, .preguntas-frecuentes{
+  width: 100%;
+  min-height: 500px;
+  margin: auto;
+  background: rgba(34, 106, 84, 0.2);
+  margin-top: -25px;
+}
+
+.form-titulo{
+  background: rgba(0, 178, 255, 0.5);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-weight: 100;
+  font-size: 30px;
+  border-bottom: solid 6px rgb(40, 162, 125);
+}
+
+.contenedor-inputs{
+  padding: 10px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+input{
+  margin-bottom: 15px;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid darkgray;
+}
+
+.input-48{
+  width: 48%;
+}
+
+.input-100 {
+  width: 100%;
+}
+
+.btn-enviar{
+  background: rgb(0, 178, 255);
+  color: #fff;
+  margin: auto;
+  padding: 10px 40px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.btn-enviar:active{
+  transform: scale(1.05);
+}
+
+.form-link{
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Inicio Header */
+header{
+  background: #2c3e50;
+  width: 100%;
+  padding: 20px;
+
+  /* Flex */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+header .logo{
+  color: #fff;
+}
+
+header .logo img{
+  width: 100px;
+  align-items: center;
+}
+
+header .logo a{
+  display: inline-flex;
+  flex-wrap: nowrap;
+  color: #fff;
+  text-decoration: none;
+  line-height: 70px;
+  font-size: 30px;
+  text-align: center;
+}
+
+header nav{
+  width: 50%;
+
+  /* Flex */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+header nav a{
+  background: rgba(0, 204, 173, 0.69);
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+
+  /* Flex */
+  flex-grow: 1;
+}
+
+header nav a:hover{
+  background: #83ddab;
+}
+
+/* Fin Header */
+
+/* Inicio Footer */
+footer{
+  background: #2c3e50;
+  width: 100%;
+  padding: 20px;
+  /* Flex */
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+  position: relative;
+  bottom: 0;
+}
+
+footer .links{
+  background: rgba(0, 204, 173, 0.69);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+footer .links a{
+  flex-grow: 1;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+footer .links a:hover{
+  background: #83ddab;
+}
+
+footer .social a{
+  color: #fff;
+  font-size: 25px;
+  text-decoration: none;
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.menu-bar{
+  display: none;
+}
+
+/* Fin Footer */
+
+.container{
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Preguntas frecuentes */
+
+.preguntas-frecuentes{
+  background: black;
+}
+
+/*Estilos FAQS*/
+.wrap {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  /*background-image: url(../images/bg-image.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;*/
+  background-color: rgba(0, 204, 173, 0.69);
+}
+
+.FAQS {
+  padding: 5px;
+  margin-bottom:5px;
+}
+
+.wrap details{
+  overflow: hidden;
+  border: 0.1px solid #00ccad;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  background-color: #EEE;
+  border-radius: 10px;
+
+}
+.wrap summary{
+  color: #484f4d;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+}
+
+.wrap details summary::-webkit-details-marker {
+  color: #7fe4bc;
+}
+
+.wrap p, a, span, li{
+  font-size: 14px;
+  color: #666;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.wrap ul {
+    margin: 0 0 0 2em;
+}
+
+.listaFAQ {
+    counter-reset: li;
+    list-style: none;
+    *list-style: decimal;
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+.listaFAQ ul {
+    margin: 0 0 0 2em;
+}
+
+.wrap li{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em .5em 0 .1em;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;
+}
+
+.listaFAQ li:hover{
+    background: #eee;
+}
+
+.listaFAQ li:hover:before{
+    transform: rotate(360deg);
+}
+
+.listaFAQ li:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #7fe4bc;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}
+
+.wrap h2{
+  color: #FFF;
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.wrap h3{
+  color: #FFF;
+  font-size: 18px;
+  padding-top: 10px;
+  text-align: center;
+  justify-content: center;
+}
+#logo{
+  background: url(../images/logo-farmacia.png); no-repeat;
+  background-position: 0 -224px;
+  width: 60px;
+  height: 30px;
+  margin-top: 11px;
+}
+.image-bottom {
+  background-image: url(../images/farma1-copia.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #00ccad;
+  height: 200px;
+  padding: 10px;
+}
+
+/* Media queries */
+@media screen and (max-width: 800px) {
+  .contenedor, .wrap header{
+    flex-direction: column;
+  }
+
+  .wrap details{
+    width: 300px;
+  }
+  .wrap p, a, span, li{
+  padding: 5px;
+  }
+
+  header{
+    padding: 0;
+  }
+
+  header .logo{
+    margin: 20px 0;
+  }
+
+  header nav{
+    width: 100%;
+  }
+
+  aside{
+    flex-direction: row;
+    flex: 0;
+  }
+
+  aside .widget{
+    flex-grow: 1;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  aside{
+    flex-direction: column;
+  }
+
+  .bienvenida {
+    display: none;
+  }
+
+  .wrap details{
+    width: 300px;
+  }
+
+  .wrap p, a, span, li{
+    padding: 2px;
+  }
+
+  footer{
+    justify-content: space-around;
+  }
+}
