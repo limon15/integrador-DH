@@ -31,7 +31,7 @@
         <br>Estás es el lugar correcto. Pero antes que nada, <a class="bienvenida-a" href="ingresar.html">iniciá sesión</a> o <a  class="bienvenida-a" href="#CrearCuenta">registrate.</a></p>
     </div>
     <a name="CrearCuenta" id="c"></a>
-    <form action="registrar.php" method="post" class="form-registrar">
+    <form action="procesar.php" method="post" class="form-registrar" enctype="multipart/form-data">
       <h2 class="form-titulo">CREA UNA CUENTA</h2>
       <div class="contenedor-inputs">
         <input type="text" name="nombre" placeholder="Nombre" class="input-48" required>
@@ -40,6 +40,8 @@
         <input type="text" name="usuario" placeholder="Usuario" class="input-48" required>
         <input type="password" name="clave" placeholder="Contraseña" class="input-48" required>
         <input type="text" name="telefono" placeholder="Teléfono" class="input-100" required>
+        <input type="file" name="avatar" class="input-48" required>
+        <button type="submit" class="btn-enviar">Subir imagen</button>
         <input type="submit" value="Registrar" class="btn-enviar">
         <p class="form-link">¿Ya tienes una cuenta?<a href="ingresar.html">Ingresa aquí</a></p>
       </div>
