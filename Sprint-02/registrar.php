@@ -7,7 +7,7 @@
 	}
 
 	// Variables para persistencia
-	$nombre = '';
+	$name = '';
 	$apellidos = '';
 	$correo = '';
 	$usuario = '';
@@ -15,14 +15,13 @@
 	$clave = '';
 	$rclave = '';
 
-
 	// Array de errores vacío
 	$errores = [];
 
 	// Si envían algo por $_POST
 	if ($_POST) {
 		// Persisto los datos con la información que envía el usuario por $_POST
-		$nombre = trim($_POST['nombre']);
+		$name = trim($_POST['name']);
     $apellidos = trim($_POST['apellidos']);
   	$correo = trim($_POST['correo']);
   	$usuario = trim($_POST['usuario']);
@@ -57,7 +56,6 @@ var_dump($errores);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <title>Formulario de registro</title>
@@ -87,21 +85,21 @@ var_dump($errores);
     <form action="registrar.php" method="post" enctype="multipart/form-data" class="form-registrar">
       <h2 class="form-titulo">CREA UNA CUENTA</h2>
       <div class="contenedor-inputs">
-						<input type="text" name="nombre" placeholder="<?= isset($errores['nombre']) ? $errores['nombre'] : "Nombre" ?>" class="input-48 <?= isset($errores['nombre']) ? 'error' : '' ?>">
+						<input type="text" name="name" placeholder="<?= isset($errores['name']) ? $errores['name'] : "Nombre" ?>" class="input-48 <?= isset($errores['name']) ? 'error' : '' ?>" value="<?php persistirDato($name) ?>">
 
-		        <input type="text" name="apellidos" placeholder="<?= isset($errores['apellidos']) ? $errores['apellidos'] : "Apellidos" ?>" class="input-48  <?= isset($errores['apellidos']) ? 'error' : '' ?>">
+		        <input type="text" name="apellidos" placeholder="<?= isset($errores['apellidos']) ? $errores['apellidos'] : "Apellidos" ?>" class="input-48  <?= isset($errores['apellidos']) ? 'error' : '' ?>" value="<?php persistirDato($apellidos) ?>">
 
-		        <input type="email" name="correo" placeholder="<?= isset($errores['correo']) ? $errores['correo'] : "Correo" ?>" class="input-48  <?= isset($errores['correo']) ? 'error' : '' ?>">
+		        <input type="email" name="correo" placeholder="<?= isset($errores['correo']) ? $errores['correo'] : "Correo" ?>" class="input-48  <?= isset($errores['correo']) ? 'error' : '' ?>" value="<?php persistirDato($correo) ?>">
 
-		        <input type="text" name="usuario" placeholder="<?= isset($errores['usuario']) ? $errores['usuario'] : "Usuario" ?>" class="input-48 <?= isset($errores['usuario']) ? 'error' : '' ?>">
+		        <input type="text" name="usuario" placeholder="<?= isset($errores['usuario']) ? $errores['usuario'] : "Usuario" ?>" class="input-48 <?= isset($errores['usuario']) ? 'error' : '' ?>" value="<?php persistirDato($usuario) ?>">
 
 		        <input type="password" name="clave" placeholder="<?= isset($errores['clave']) ? $errores['clave'] : "Ingresá tu contraseña" ?>" class="input-48 <?= isset($errores['clave']) ? 'error' : '' ?>">
 
 		        <input type="password" name="rclave" placeholder="<?= isset($errores['clave']) ? $errores['clave'] : "Repetí tu contraseña" ?>" class="input-48 <?= isset($errores['clave']) ? 'error' : '' ?>">
 
-		        <input type="tel" name="telefono" placeholder="<?= isset($errores['telefono']) ? $errores['telefono'] : "Telefono" ?>" class="input-48 <?= isset($errores['telefono']) ? 'error' : '' ?>">
+		        <input type="tel" name="telefono" placeholder="<?= isset($errores['telefono']) ? $errores['telefono'] : "Telefono" ?>" class="input-48 <?= isset($errores['telefono']) ? 'error' : '' ?>" value="<?php persistirDato($telefono) ?>">
 
-						<input class="input-48 <?= isset($errores['avatar']) ? 'error' : '' ?>" type="file" name="avatar" value="<?= isset($_FILES['avatar']) ? $_FILES['avatar']['name'] : null ?>">
+						<input class="input-48 <?= isset($errores['avatar']) ? 'error' : '' ?>" type="file" name="avatar">
 
 		        <input type="submit" value="Registrar" class="btn-enviar">
 

@@ -17,10 +17,14 @@
 	function crearUsuario($data, $imagen) {
 		$usuario = [
 			'id' => traerUltimoID(),
-			'nombre' => $data['nombre'],
+			'name' => $data['name'],
+			'apellidos' => $data['apellidos'],
 			'correo' => $data['correo'],
+			'usuario' => $data['usuario'],
+			'telefono' => $data['telefono'],
 			'clave' => password_hash($data['clave'], PASSWORD_DEFAULT),
-			'foto' => 'img/' . $data['correo'] . '.' . pathinfo($_FILES[$imagen]['nombre'], PATHINFO_EXTENSION)
+			'rclave' => password_hash($data['rclave'], PASSWORD_DEFAULT),
+			'foto' => 'img/' . $data['email'] . '.' . pathinfo($_FILES[$imagen]['name'], PATHINFO_EXTENSION)
 		];
 
 	   return $usuario;
@@ -38,24 +42,30 @@
 	function validar($data, $archivo) {
 		$errores = [];
 
-		$nombre = trim($_POST['nombre']);
+		$name = trim($_POST['name']);
+		$apellidos = trim($_POST['apellidos']);
 		$correo = trim($_POST['correo']);
+		$usuario = trim($_POST['usuario']);
+		$telefono = trim($_POST['telefono']);
+		$clave = trim($_POST['clave']);
 		$rclave = trim($_POST['rclave']);
 
 
 		// Valido cada campo del formulario y por cada error genero una posición en el array de errores ($errores) que inicialmente estaba vacío
 
-		if ($nombre == '') { // Si el nombre está vacio
-			$errores['nombre'] = "Completá tu nombre";
+		if ($name == '') { // Si el nombre está vacio
+			$errores['name'] = "Completá tu nombre";
 		}
-		if ($apellidos == '') { // Si el nombre está vacio
+		if ($apellidos == '') { // Si el apellido está vacio
 			$errores['apellidos'] = "Completá tus apellidos";
 		}
-		if ($usuario == '') { // Si el nombre está vacio
+		if ($usuario == '') { // Si el usuario está vacio
 			$errores['usuario'] = "Completá tu usuario";
 		}
-		if ($telefono == '') { // Si el nombre está vacio
+		if ($telefono == '') { // Si el teléfono está vacio
 			$errores['telefono'] = "Completá tu teléfono";
+		} elseif (!is_numeric($telefono)) {
+			$errores['telefono'] = "El número de teléfono no debe contener letras"; //Si no es un número de teléfono
 		}
 		if ($correo == '') { // Si el correo está vacio
 			$errores['correo'] = "Completá tu correo";
@@ -68,14 +78,16 @@
 
 		if ($clave == '' || $rclave == '') { // Si la contraseña o repetir contraseña está(n) vacio(s)
 			$errores['clave'] = "Por favor completá tus claves";
+		} elseif (strlen($clave) < 7 || strlen($rclave) < 7) {
+			$errores['clave'] = "La clave debe tener al menos 7 caracteres"; // Si la clave tiene menos de 7 caracteres
 		} elseif ($clave != $rclave) {
-			$errores['clave'] = "Tus contraseñas no coinciden";
+			$errores['clave'] = "Tus contraseñas no coinciden"; // Si las claves no coinciden
 		}
 
 		if ($_FILES[$archivo]['error'] != UPLOAD_ERR_OK) { // Si no subieron ninguna imagen
 			$errores['avatar'] = "Che subí una foto";
 		} else {
-			$ext = strtolower(pathinfo($_FILES[$archivo]['nombre'], PATHINFO_EXTENSION));
+			$ext = strtolower(pathinfo($_FILES[$archivo]['name'], PATHINFO_EXTENSION));
 
 			if ($ext != 'jpg' && $ext != 'png' && $ext != 'jpeg') {
 				$errores['avatar'] = "Formatos admitidos: JPG o PNG";
@@ -175,9 +187,10 @@
 
 		if ($_FILES[$laImagen]['error'] == UPLOAD_ERR_OK) {
 			// Capturo el nombre de la imagen, para obtener la extensión
-			$nombreArchivo = $_FILES[$laImagen]['nombre'];
+			$nombreArchivo = $_FILES[$laImagen]['name'];
 			// Obtengo la extensión de la imagen
 			$ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+			var_dump($ext);
 			// Capturo el archivo temporal
 			$archivoFisico = $_FILES[$laImagen]['tmp_name'];
 
@@ -191,7 +204,7 @@
 				// Subo la imagen definitivamente
 				move_uploaded_file($archivoFisico, $rutaFinalConNombre);
 			} else {
-				$errores['imagen'] = 'El formato tiene que ser JPG, JPEG, PNG o GIF';
+				$errores['imagen'] = 'El formato tiene que ser JPG, JPEG, PNG';
 			}
 		} else {
 			// Genero error si no se puede subir
@@ -301,4 +314,10 @@
 		}
 
 		return false;
+	}
+
+	function persistirDato($data){
+		if (isset($data)) { // Si envían algo por $_POST
+			echo $data;
+		}
 	}
