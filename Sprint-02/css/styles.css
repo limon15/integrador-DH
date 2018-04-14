@@ -82,6 +82,15 @@ input{
 
 .input-48{
   width: 48%;
+  outline: none;
+}
+
+.error {
+  border: solid 1px red;
+  box-shadow: 0 0 5px 2px red;
+}
+.error::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: red;
 }
 
 .input-100 {

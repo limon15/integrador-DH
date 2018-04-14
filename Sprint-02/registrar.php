@@ -12,6 +12,8 @@
 	$correo = '';
 	$usuario = '';
 	$telefono = '';
+	$clave = '';
+	$rclave = '';
 
 
 	// Array de errores vacío
@@ -25,6 +27,8 @@
   	$correo = trim($_POST['correo']);
   	$usuario = trim($_POST['usuario']);
   	$telefono = trim($_POST['telefono']);
+  	$clave = trim($_POST['clave']);
+  	$rclave = trim($_POST['rclave']);
 
 		// Valido y guardo en errores
 		$errores = validar($_POST, 'avatar');
@@ -43,6 +47,7 @@
 			}
 		}
 	}
+var_dump($errores);
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +57,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <title>Formulario de registro</title>
@@ -65,7 +71,7 @@
 				<a href="#">FARMACIAS DE TURNO</a>
 			</div>
 			<nav>
-				<a href="./login.html">Inicio</a>
+				<a href="./registrar.php">Inicio</a>
 				<a href="#Ayuda">Ayuda</a>
 				<a href="#">Descuentos</a>
 	      <a href="#">Quiénes somos</a>
@@ -78,17 +84,28 @@
         <br>Estás es el lugar correcto. Pero antes que nada, <a class="bienvenida-a" href="ingresar.php">iniciá sesión</a> o <a  class="bienvenida-a" href="#CrearCuenta">registrate.</a></p>
     </div>
     <a name="CrearCuenta" id="c"></a>
-    <form action="registrar.php" method="post" class="form-registrar">
+    <form action="registrar.php" method="post" enctype="multipart/form-data" class="form-registrar">
       <h2 class="form-titulo">CREA UNA CUENTA</h2>
       <div class="contenedor-inputs">
-        <input type="text" name="nombre" placeholder="Nombre" class="input-48">
-        <input type="text" name="apellidos" placeholder="Apellidos" class="input-48">
-        <input type="email" name="correo" placeholder="E-mail" class="input-100">
-        <input type="text" name="usuario" placeholder="Usuario" class="input-48">
-        <input type="password" name="clave" placeholder="Contraseña" class="input-48">
-        <input type="text" name="telefono" placeholder="Teléfono" class="input-100">
-        <input type="submit" value="Registrar" class="btn-enviar">
-        <p class="form-link">¿Ya tienes una cuenta?<a href="ingresar.php">Ingresa aquí</a></p>
+						<input type="text" name="nombre" placeholder="<?= isset($errores['nombre']) ? $errores['nombre'] : "Nombre" ?>" class="input-48 <?= isset($errores['nombre']) ? 'error' : '' ?>">
+
+		        <input type="text" name="apellidos" placeholder="<?= isset($errores['apellidos']) ? $errores['apellidos'] : "Apellidos" ?>" class="input-48  <?= isset($errores['apellidos']) ? 'error' : '' ?>">
+
+		        <input type="email" name="correo" placeholder="<?= isset($errores['correo']) ? $errores['correo'] : "Correo" ?>" class="input-48  <?= isset($errores['correo']) ? 'error' : '' ?>">
+
+		        <input type="text" name="usuario" placeholder="<?= isset($errores['usuario']) ? $errores['usuario'] : "Usuario" ?>" class="input-48 <?= isset($errores['usuario']) ? 'error' : '' ?>">
+
+		        <input type="password" name="clave" placeholder="<?= isset($errores['clave']) ? $errores['clave'] : "Ingresá tu contraseña" ?>" class="input-48 <?= isset($errores['clave']) ? 'error' : '' ?>">
+
+		        <input type="password" name="rclave" placeholder="<?= isset($errores['clave']) ? $errores['clave'] : "Repetí tu contraseña" ?>" class="input-48 <?= isset($errores['clave']) ? 'error' : '' ?>">
+
+		        <input type="tel" name="telefono" placeholder="<?= isset($errores['telefono']) ? $errores['telefono'] : "Telefono" ?>" class="input-48 <?= isset($errores['telefono']) ? 'error' : '' ?>">
+
+						<input class="input-48 <?= isset($errores['avatar']) ? 'error' : '' ?>" type="file" name="avatar" value="<?= isset($_FILES['avatar']) ? $_FILES['avatar']['name'] : null ?>">
+
+		        <input type="submit" value="Registrar" class="btn-enviar">
+
+		        <p class="form-link">¿Ya tienes una cuenta?<a href="ingresar.php">Ingresa aquí</a></p>
       </div>
     </form>
     <a name="Ayuda" id="a"></a>
@@ -129,7 +146,7 @@
 
     <footer>
 			<section class="links">
-        <a href="./login.html">Inicio</a>
+        <a href="./registrar.php">Inicio</a>
         <a href="#Ayuda">Ayuda</a>
         <a href="#">Descuentos</a>
         <a href="#">Quiénes somos</a>

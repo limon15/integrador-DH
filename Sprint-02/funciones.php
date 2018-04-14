@@ -17,11 +17,10 @@
 	function crearUsuario($data, $imagen) {
 		$usuario = [
 			'id' => traerUltimoID(),
-			'name' => $data['name'],
-			'email' => $data['email'],
-			'pass' => password_hash($data['pass'], PASSWORD_DEFAULT),
-			'pais' => $data['pais'],
-			'foto' => 'img/' . $data['email'] . '.' . pathinfo($_FILES[$imagen]['name'], PATHINFO_EXTENSION)
+			'nombre' => $data['nombre'],
+			'correo' => $data['correo'],
+			'clave' => password_hash($data['clave'], PASSWORD_DEFAULT),
+			'foto' => 'img/' . $data['correo'] . '.' . pathinfo($_FILES[$imagen]['nombre'], PATHINFO_EXTENSION)
 		];
 
 	   return $usuario;
@@ -33,48 +32,50 @@
 	/*
 		- Recibe dos parámetros -> $_POST y el nombre del campo de subir imagen
 		- Valida en el 1er submit que todos los campos son obligatorios
-		- Usa la función existeEmail() para verificar que no haya registros con el mismo email
+		- Usa la función existeEmail() para verificar que no haya registros con el mismo correo
 		- Retorna un array de errores que puede estar vacio
 	*/
 	function validar($data, $archivo) {
 		$errores = [];
 
-		$name = trim($_POST['name']);
-		$email = trim($_POST['email']);
-		$pais = trim($_POST['pais']);
-		$pass = trim($_POST['pass']);
-		$rpass = trim($_POST['rpass']);
+		$nombre = trim($_POST['nombre']);
+		$correo = trim($_POST['correo']);
+		$rclave = trim($_POST['rclave']);
 
 
 		// Valido cada campo del formulario y por cada error genero una posición en el array de errores ($errores) que inicialmente estaba vacío
 
-		if ($name == '') { // Si el nombre está vacio
-			$errores['name'] = "Completa tu nombre";
+		if ($nombre == '') { // Si el nombre está vacio
+			$errores['nombre'] = "Completá tu nombre";
+		}
+		if ($apellidos == '') { // Si el nombre está vacio
+			$errores['apellidos'] = "Completá tus apellidos";
+		}
+		if ($usuario == '') { // Si el nombre está vacio
+			$errores['usuario'] = "Completá tu usuario";
+		}
+		if ($telefono == '') { // Si el nombre está vacio
+			$errores['telefono'] = "Completá tu teléfono";
+		}
+		if ($correo == '') { // Si el correo está vacio
+			$errores['correo'] = "Completá tu correo";
+		} elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+			// Si el correo no es un formato valido
+			$errores['correo'] = "Por favor, poner un correo de verdad";
+		} elseif (existeEmail($correo)) { // Si el correo ya está registrado vacio
+			$errores['correo'] = "Este correo ya existe";
 		}
 
-		if ($pais == '') { // Si el país no fué elegido
-			$errores['pais'] = "Decime de donde sos";
-		}
-
-		if ($email == '') { // Si el email está vacio
-			$errores['email'] = "Completa tu email";
-		} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			// Si el email no es un formato valido
-			$errores['email'] = "Por favor poner un email de verdad, gatx.";
-		} elseif (existeEmail($email)) { // Si el email ya está registrado vacio
-			$errores['email'] = "Este email ya existe.";
-		}
-
-		if ($pass == '' || $rpass == '') { // Si la contraseña o repetir contraseña está(n) vacio(s)
-			$errores['pass'] = "Por favor completa tus passwords";
-		} elseif ($pass != $rpass) {
-			$errores['pass'] = "Tus contraseñas no coinciden";
+		if ($clave == '' || $rclave == '') { // Si la contraseña o repetir contraseña está(n) vacio(s)
+			$errores['clave'] = "Por favor completá tus claves";
+		} elseif ($clave != $rclave) {
+			$errores['clave'] = "Tus contraseñas no coinciden";
 		}
 
 		if ($_FILES[$archivo]['error'] != UPLOAD_ERR_OK) { // Si no subieron ninguna imagen
 			$errores['avatar'] = "Che subí una foto";
 		} else {
-			$ext = strtolower(pathinfo($_FILES[$archivo]['name'], PATHINFO_EXTENSION));
+			$ext = strtolower(pathinfo($_FILES[$archivo]['nombre'], PATHINFO_EXTENSION));
 
 			if ($ext != 'jpg' && $ext != 'png' && $ext != 'jpeg') {
 				$errores['avatar'] = "Formatos admitidos: JPG o PNG";
@@ -142,18 +143,18 @@
 
 	// == FUNCTION - existeEmail ==
 	/*
-		- Recibe un parámetro -> $_POST['email']
+		- Recibe un parámetro -> $_POST['correo']
 		- Usa la función traerTodos()
-		- Retorna un array del usuario si encuentra el email. De no encontrarlo, retorna false
+		- Retorna un array del usuario si encuentra el correo. De no encontrarlo, retorna false
 	*/
-	function existeEmail($email){
+	function existeEmail($correo){
 		// Traigo todos los usuarios
 		$todos = traerTodos();
 
 		// Recorro ese array
 		foreach ($todos as $unUsuario) {
 			// Si el mail del usuario en el array es igual al que me llegó por POST, devuelvo al usuario
-			if ($unUsuario['email'] == $email) {
+			if ($unUsuario['correo'] == $correo) {
 				return $unUsuario;
 			}
 		}
@@ -174,7 +175,7 @@
 
 		if ($_FILES[$laImagen]['error'] == UPLOAD_ERR_OK) {
 			// Capturo el nombre de la imagen, para obtener la extensión
-			$nombreArchivo = $_FILES[$laImagen]['name'];
+			$nombreArchivo = $_FILES[$laImagen]['nombre'];
 			// Obtengo la extensión de la imagen
 			$ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
 			// Capturo el archivo temporal
@@ -185,7 +186,7 @@
 				// Armo la ruta donde queda gurdada la imagen
 				$dondeEstoyParado = dirname(__FILE__);
 
-				$rutaFinalConNombre = $dondeEstoyParado . '/img/' . $_POST['email'] . '.' . $ext;
+				$rutaFinalConNombre = $dondeEstoyParado . '/img/' . $_POST['correo'] . '.' . $ext;
 
 				// Subo la imagen definitivamente
 				move_uploaded_file($archivoFisico, $rutaFinalConNombre);
@@ -233,22 +234,22 @@
 	*/
 	function validarLogin($data) {
 		$arrayADevolver = [];
-		$email = trim($data['email']);
-		$pass = trim($data['pass']);
+		$correo = trim($data['correo']);
+		$clave = trim($data['clave']);
 
-		if ($email == '') {
-			$arrayADevolver['email'] = 'Completá tu email';
-		} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			$arrayADevolver['email'] = 'Poné un formato de email válido';
-		} elseif (!$usuario = existeEmail($email)) {
-			$arrayADevolver['email'] = 'Este email no está registrado';
+		if ($correo == '') {
+			$arrayADevolver['correo'] = 'Completá tu correo';
+		} elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+			$arrayADevolver['correo'] = 'Poné un formato de correo válido';
+		} elseif (!$usuario = existeEmail($correo)) {
+			$arrayADevolver['correo'] = 'Este correo no está registrado';
 		} else {
 			// Si el mail existe, me guardo al usuario dueño del mismo
-			// $usuario = existeEmail($email);
+			// $usuario = existeEmail($correo);
 
  			// Pregunto si coindice la password escrita con la guardada en el JSON
-      	if (!password_verify($pass, $usuario["pass"])) {
-         	$arrayADevolver['pass'] = "Credenciales incorrectas";
+      	if (!password_verify($clave, $usuario["clave"])) {
+         	$arrayADevolver['clave'] = "Credenciales incorrectas";
       	}
 		}
 
