@@ -24,7 +24,7 @@
 			'telefono' => $data['telefono'],
 			'clave' => password_hash($data['clave'], PASSWORD_DEFAULT),
 			'rclave' => password_hash($data['rclave'], PASSWORD_DEFAULT),
-			'foto' => 'img/' . $data['email'] . '.' . pathinfo($_FILES[$imagen]['name'], PATHINFO_EXTENSION)
+			'foto' => 'img/' . $data['correo'] . '.' . pathinfo($_FILES[$imagen]['name'], PATHINFO_EXTENSION)
 		];
 
 	   return $usuario;

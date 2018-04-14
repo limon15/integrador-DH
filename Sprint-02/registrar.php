@@ -46,7 +46,6 @@
 			}
 		}
 	}
-var_dump($errores);
 ?>
 
 <!DOCTYPE html>

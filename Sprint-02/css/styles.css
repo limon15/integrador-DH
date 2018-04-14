@@ -46,7 +46,7 @@ input, .form-link, .input-100, p, span, li {
   border-radius: 5px;
 }
 
-.form-registrar, .preguntas-frecuentes{
+.form-registrar, .preguntas-frecuentes, .perfil{
   width: 100%;
   min-height: 500px;
   margin: auto;
@@ -54,7 +54,7 @@ input, .form-link, .input-100, p, span, li {
   margin-top: -25px;
 }
 
-.form-titulo{
+.form-titulo, .perfil{
   background: rgba(0, 178, 255, 0.5);
   color: #fff;
   padding: 20px;
@@ -62,6 +62,13 @@ input, .form-link, .input-100, p, span, li {
   font-weight: 100;
   font-size: 30px;
   border-bottom: solid 6px rgb(40, 162, 125);
+}
+
+.perfil{
+  background: black;
+  overflow: hidden;
+  margin: auto;
+  display: flex;
 }
 
 .contenedor-inputs{

@@ -7,24 +7,24 @@
 	}
 
 	// Variables para persistencia
-	$email = '';
+	$correo = '';
 
 	// Array de errores vacío
 	$errores = [];
 
 	// Si envían algo por $_POST
 	if ($_POST) {
-		$email = trim($_POST['email']);
+		$correo = trim($_POST['correo']);
 
 		$errores = validarLogin($_POST);
 
 		if (empty($errores)) {
-			$usuario = existeEmail($email);
+			$usuario = existeEmail($correo);
 
 			loguear($usuario);
 
 			// Seteo la cookie
-			if (isset($_POST["recordar"])) {
+			if (isset($_POST["rememberusername"])) {
 	        setcookie('id', $usuario['id'], time() + 3600 * 24 * 30);
 	      }
 
@@ -52,28 +52,28 @@
     		    <a href="#">FARMACIAS DE TURNO</a>
     		</div>
     		<nav>
-    			<a href="./login.html">Inicio</a>
+    			<a href="./ingresar.php">Inicio</a>
     			<a href="#Ayuda">Ayuda</a>
     			<a href="#">Descuentos</a>
     	    <a href="#">Quiénes somos</a>
-          <a href="./ingresar.html">Iniciar sesión</a>
+          <a href="./ingresar.php">Iniciar sesión</a>
     		</nav>
     	</header>
 
-    <form action="registrar.php" method="post" class="form-registrar">
+    <form method="post" class="form-registrar" enctype="multipart/form-data">
       <h2 class="form-titulo">INICIAR SESIÓN</h2>
       <div class="contenedor-inputs">
-        <input type="text" name="nombre" placeholder="Usuario o E-mail" class="input-48">
+        <input type="email" name="correo" placeholder="Usuario o E-mail" class="input-48">
         <input type="password" name="clave" placeholder="Contraseña" class="input-48">
         <input type="submit" value="Ingresar" class="btn-enviar">
 
         <label for="rememberusername" class="input-100">
-          <input type="checkbox" name="rememberusername" id="rememberusername" value="1" checked="checked">
+          <input type="checkbox" name="rememberusername" checked="checked">
           Recordar nombre de usuario
         </label>
         <p class="form-link">¿No tienes una cuenta?<a href="registrar.php">Regístrate</a></p>
-      </div>
-    </form>
+      </form>
+    </div>
 
     <section class="preguntas-frecuentes">
       <div class="wrap">
