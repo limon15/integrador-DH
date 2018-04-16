@@ -125,6 +125,9 @@
         <a href="#"><i class="social ion-social-linkedin-outline"></i></a>
         <a href="#"><i class="social ion-social-youtube-outline"></i></a>
 			</div>
+      <section class="links">
+        <p>farmaciasdeturno TM Copyright © 2018 All rights reserved to farmaciasdeturno.com.</p>
+      </section>
 		</footer>
   </div>
   </body>
