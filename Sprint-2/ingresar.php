@@ -38,6 +38,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
@@ -111,18 +112,24 @@
     </section>
 
     <footer>
-			<section class="links">
-        <a href="./login.html">Inicio</a>
+      <section class="links">
+        <a href="./perfil.php">Inicio</a>
         <a href="#Ayuda">Ayuda</a>
         <a href="#">Descuentos</a>
         <a href="#">Quiénes somos</a>
-        <a href="./ingresar.html">Iniciar sesión</a>
-			</section>
-			<div class="social">
-				<a href="#"><i class="ion-social-facebook-outline"></i></a>
-				<a href="#"><i class="social ion-social-twitter-outline"></i></a>
-			</div>
-		</footer>
+        <a href="./logout.php">CERRAR SESION</a>
+      </section>
+      <div class="social">
+        <a href="#"><i class="ion-social-facebook-outline"></i></a>
+        <a href="#"><i class="social ion-social-twitter-outline"></i></a>
+        <a href="#"><i class="social ion-social-instagram-outline"></i></a>
+        <a href="#"><i class="social ion-social-linkedin-outline"></i></a>
+        <a href="#"><i class="social ion-social-youtube-outline"></i></a>
+      </div>
+      <section class="links">
+        <p>farmaciasdeturno TM Copyright © 2018 All rights reserved to farmaciasdeturno.com.</p>
+      </section>
+    </footer>
   </div>
   </body>
 </html>
