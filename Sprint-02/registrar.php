@@ -147,15 +147,21 @@
     <footer>
 			<section class="links">
         <a href="./registrar.php">Inicio</a>
-        <a href="#Ayuda">Ayuda</a>
+        <a href="#a">Ayuda</a>
         <a href="#">Descuentos</a>
         <a href="#">Quiénes somos</a>
         <a href="ingresar.php">Iniciar sesión</a>
 			</section>
 			<div class="social">
-				<a href="#"><i class="ion-social-facebook-outline"></i></a>
+				<a href="_http://www.facebook.com"><i class="ion-social-facebook-outline"></i></a>
         <a href="#"><i class="social ion-social-twitter-outline"></i></a>
+        <a href="#"><i class="social ion-social-instagram-outline"></i></a>
+        <a href="#"><i class="social ion-social-linkedin-outline"></i></a>
+        <a href="#"><i class="social ion-social-youtube-outline"></i></a>
 			</div>
+      <section class="links">
+        <p>farmaciasdeturno TM Copyright © 2018 All rights reserved to farmaciasdeturno.com.</p>
+      </section>
 		</footer>
   </div>
   </body>

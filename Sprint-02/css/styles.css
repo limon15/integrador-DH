@@ -29,8 +29,10 @@ input, .form-link, .input-100, p, span, li {
   border-bottom: solid 6px rgb(40, 162, 125);
   }
 .bienvenida-titulo {
-  font-size: 40px;
+  font-size: 30px;
 }
+
+
 
 .bienvenida-parrafo, .bienvenida-a {
   font-size: 30px;
@@ -199,18 +201,19 @@ header nav a:hover{
 footer{
   background: #2c3e50;
   width: 100%;
+  height: 300px;
   padding: 20px;
   /* Flex */
   display: flex;
   flex-wrap: wrap;
   /* flex-wrap: wrap; */
-  justify-content: space-between;
+  justify-content: space-around;
   position: relative;
   bottom: 0;
 }
 
 footer .links{
-  background: rgba(0, 204, 173, 0.69);
+  /* background: rgba(0, 204, 173, 0.69); */
   display: flex;
   flex-wrap: wrap;
 }
@@ -223,9 +226,13 @@ footer .links a{
   text-decoration: none;
 }
 
-footer .links a:hover{
-  background: #83ddab;
+footer p{
+  color: #fff;
 }
+
+/* footer .links a:hover{
+  background: #83ddab;
+} */
 
 footer .social a{
   color: #fff;
@@ -234,6 +241,8 @@ footer .social a{
   margin: 0 10px;
   display: inline-block;
 }
+
+
 
 .menu-bar{
   display: none;
@@ -388,6 +397,7 @@ footer .social a{
   height: 200px;
   padding: 10px;
 }
+
 
 /* Media queries */
 @media screen and (max-width: 800px) {

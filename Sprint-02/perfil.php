@@ -12,7 +12,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
@@ -35,9 +36,16 @@
     		</nav>
     	</header>
 			<div class="bienvenida">
+<<<<<<< HEAD
 	      <h2 class="bienvenida-titulo">¡Bienvenido/a <?=$usuario['name']?>!</h2>
 	        <p class="bienvenida-parrafo">Ahora podés buscar la farmacia de turno más cercana a tu ubicación.
 	        <br>Recordá dejar una valoración de la farmacia para futuros visitantes. Esperamos que disfrutes de la página ☺</p>
+=======
+        <img class="img-circle" src="<?=$usuario['foto']?>" width="100" height="100">
+	      <h2 class="bienvenida-titulo">¡BIENVENIDO/A <?=$usuario['name']?>!</h2>
+	        <p class="bienvenida-parrafo">¿Buscás la farmacia de turno más cercada a tu domicilio?
+	        <br>Estás es el lugar correcto. Buscá tu farmacia más cercana, dejá una valoración para futuros visitantes y esperamos que disfrutes de la página ;)</p>
+>>>>>>> ecb2aadad83297b69c7e5e9f4d8da7134b877eae
 	    </div>
     <section class="preguntas-frecuentes">
       <div class="wrap">
@@ -84,8 +92,14 @@
 			</section>
 			<div class="social">
 				<a href="#"><i class="ion-social-facebook-outline"></i></a>
-				<a href="#"><i class="social ion-social-twitter-outline"></i></a>
+        <a href="#"><i class="social ion-social-twitter-outline"></i></a>
+        <a href="#"><i class="social ion-social-instagram-outline"></i></a>
+        <a href="#"><i class="social ion-social-linkedin-outline"></i></a>
+        <a href="#"><i class="social ion-social-youtube-outline"></i></a>
 			</div>
+      <section class="links">
+        <p>farmaciasdeturno TM Copyright © 2018 All rights reserved to farmaciasdeturno.com.</p>
+      </section>
 		</footer>
   </div>
   </body>

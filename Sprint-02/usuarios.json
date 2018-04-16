@@ -1,3 +1,7 @@
 
+<<<<<<< HEAD
 {"id":1,"name":"Sof\u00eda","apellidos":"Martignetti","correo":"so.martignetti@gmail.com","usuario":"limon","telefono":"42936406","clave":"$2y$10$NWZ4J5PRbpaup0sYLd6ujeddlt2pU0VGtmbXpWf.RN1sOoU.iXb1y","rclave":"$2y$10$KdXEDS1PPxhq6qLa2dihSuC15tvfQV\/f9C47UBus8aBK2YEEPxYZ2","foto":"img\/so.martignetti@gmail.com.jpg"}
 {"id":2,"name":"Juan","apellidos":"Perez","correo":"jperez@gmail.com","usuario":"jperez","telefono":"123456","clave":"$2y$10$31hJFYZyXpPVRX.IdZne8.hDiIl3qfsq74JS\/tjIaMVuWykdmwVrq","rclave":"$2y$10$b6O3d4RCjwrlsmMmPj1bb.RRAaztSwbErZzHITF0Twj0wuevyI7ra","foto":"img\/jperez@gmail.com.jpg"}
+=======
+{"id":1,"name":"Maximiliano","apellidos":"Coppola","correo":"maxicopp@gmail.com","usuario":"maxicopp","telefono":"1166248606","clave":"$2y$10$UKlq64OUoaYU5f3kKnKT6uwjLwRous6gwSU0e9BfQ1LpJWr9kqFcC","rclave":"$2y$10$BuETh3XR7ai023cgqHn0Ue8K61TxvGOyCyZVPNwY5JUz1GfV5ktqC","foto":"img\/maxicopp@gmail.com.jpg"}
+>>>>>>> ecb2aadad83297b69c7e5e9f4d8da7134b877eae
