@@ -9,7 +9,4 @@ session_destroy();
 header('location:ingresar.php');
 exit;
 
-
-
-
  ?>

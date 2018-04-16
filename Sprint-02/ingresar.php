@@ -63,13 +63,13 @@
     <form method="post" class="form-registrar" enctype="multipart/form-data">
       <h2 class="form-titulo">INICIAR SESIÓN</h2>
       <div class="contenedor-inputs">
-        <input type="email" name="correo" placeholder="Usuario o E-mail" class="input-48">
+        <input type="email" name="correo" placeholder="<?= isset($errores['correo']) ? $errores['correo'] : "Correo" ?>" class="input-48  <?= isset($errores['correo']) ? 'error' : '' ?>" value="<?php persistirDato($correo) ?>">
         <input type="password" name="clave" placeholder="Contraseña" class="input-48">
         <input type="submit" value="Ingresar" class="btn-enviar">
 
         <label for="rememberusername" class="input-100">
           <input type="checkbox" name="rememberusername" checked="checked">
-          Recordar nombre de usuario
+          Mantener logueado
         </label>
         <p class="form-link">¿No tienes una cuenta?<a href="registrar.php">Regístrate</a></p>
       </form>
@@ -112,15 +112,18 @@
 
     <footer>
 			<section class="links">
-        <a href="./login.html">Inicio</a>
+        <a href="./registrar.php">Inicio</a>
         <a href="#Ayuda">Ayuda</a>
         <a href="#">Descuentos</a>
         <a href="#">Quiénes somos</a>
-        <a href="./ingresar.html">Iniciar sesión</a>
+        <a href="./ingresar.php">Iniciar sesión</a>
 			</section>
 			<div class="social">
 				<a href="#"><i class="ion-social-facebook-outline"></i></a>
-				<a href="#"><i class="social ion-social-twitter-outline"></i></a>
+        <a href="#"><i class="social ion-social-twitter-outline"></i></a>
+        <a href="#"><i class="social ion-social-instagram-outline"></i></a>
+        <a href="#"><i class="social ion-social-linkedin-outline"></i></a>
+        <a href="#"><i class="social ion-social-youtube-outline"></i></a>
 			</div>
 		</footer>
   </div>

@@ -74,6 +74,8 @@
 			$errores['correo'] = "Por favor, poner un correo de verdad";
 		} elseif (existeEmail($correo)) { // Si el correo ya está registrado vacio
 			$errores['correo'] = "Este correo ya existe";
+		} elseif (existeUsuario($usuario)) { // Si el correo ya está registrado vacio
+			$errores['usuario'] = "Este usuario ya existe";
 		}
 
 		if ($clave == '' || $rclave == '') { // Si la contraseña o repetir contraseña está(n) vacio(s)
@@ -171,6 +173,20 @@
 			}
 		}
 
+		return false;
+	}
+
+	function existeUsuario($usuario){
+		// Traigo todos los usuarios
+		$todos = traerTodos();
+
+		// Recorro ese array
+		foreach ($todos as $unUsuario) {
+			// Si el usuario en el array es igual al que me llegó por POST, devuelvo al usuario
+			if ($unUsuario['usuario'] == $usuario) {
+				return $unUsuario;
+			}
+		}
 		return false;
 	}
 
