@@ -13,6 +13,7 @@
   <head>
     <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
@@ -35,6 +36,7 @@
     		</nav>
     	</header>
 			<div class="bienvenida">
+        <img class="img-circle" src="<?=$usuario['foto']?>" width="100" height="100">
 	      <h2 class="bienvenida-titulo">¡Bienvenido/a <?=$usuario['name']?>!</h2>
 	        <p class="bienvenida-parrafo">Ahora podés buscar la farmacia de turno más cercana a tu ubicación.
 	        <br>Recordá dejar una valoración de la farmacia para futuros visitantes. Esperamos que disfrutes de la página ☺</p>
