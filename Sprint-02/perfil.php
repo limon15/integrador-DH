@@ -35,9 +35,9 @@
     		</nav>
     	</header>
 			<div class="bienvenida">
-	      <h2 class="bienvenida-titulo">¡BIENVENIDO/A <?=$usuario['name']?>!</h2>
-	        <p class="bienvenida-parrafo">¿Buscás la farmacia de turno más cercada a tu domicilio?
-	        <br>Estás es el lugar correcto. Buscá tu farmacia más cercana, dejá una valoración para futuros visitantes y esperamos que disfrutes de la página ;)</p>
+	      <h2 class="bienvenida-titulo">¡Bienvenido/a <?=$usuario['name']?>!</h2>
+	        <p class="bienvenida-parrafo">Ahora podés buscar la farmacia de turno más cercana a tu ubicación.
+	        <br>Recordá dejar una valoración de la farmacia para futuros visitantes. Esperamos que disfrutes de la página ☺</p>
 	    </div>
     <section class="preguntas-frecuentes">
       <div class="wrap">

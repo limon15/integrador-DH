@@ -84,7 +84,7 @@
     <form action="registrar.php" method="post" enctype="multipart/form-data" class="form-registrar">
       <h2 class="form-titulo">CREA UNA CUENTA</h2>
       <div class="contenedor-inputs">
-						<input type="text" name="name" placeholder="<?= isset($errores['name']) ? $errores['name'] : "Nombre" ?>" class="input-48 <?= isset($errores['name']) ? 'error' : '' ?>" value="<?php persistirDato($name) ?>">
+						<input type="text" name="name" placeholder="<?= isset($errores['name']) ? $errores['name'] : "Nombres" ?>" class="input-48 <?= isset($errores['name']) ? 'error' : '' ?>" value="<?php persistirDato($name) ?>">
 
 		        <input type="text" name="apellidos" placeholder="<?= isset($errores['apellidos']) ? $errores['apellidos'] : "Apellidos" ?>" class="input-48  <?= isset($errores['apellidos']) ? 'error' : '' ?>" value="<?php persistirDato($apellidos) ?>">
 
@@ -92,18 +92,21 @@
 
 		        <input type="text" name="usuario" placeholder="<?= isset($errores['usuario']) ? $errores['usuario'] : "Usuario" ?>" class="input-48 <?= isset($errores['usuario']) ? 'error' : '' ?>" value="<?php persistirDato($usuario) ?>">
 
-		        <input type="password" name="clave" placeholder="<?= isset($errores['clave']) ? $errores['clave'] : "Ingresá tu contraseña" ?>" class="input-48 <?= isset($errores['clave']) ? 'error' : '' ?>">
+		        <input type="password" name="clave" placeholder="<?= isset($errores['clave']) ? $errores['clave'] : "Ingresá una contraseña" ?>" class="input-48 <?= isset($errores['clave']) ? 'error' : '' ?>">
 
 		        <input type="password" name="rclave" placeholder="<?= isset($errores['clave']) ? $errores['clave'] : "Repetí tu contraseña" ?>" class="input-48 <?= isset($errores['clave']) ? 'error' : '' ?>">
 
-		        <input type="tel" name="telefono" placeholder="<?= isset($errores['telefono']) ? $errores['telefono'] : "Telefono" ?>" class="input-48 <?= isset($errores['telefono']) ? 'error' : '' ?>" value="<?php persistirDato($telefono) ?>">
+		        <input type="tel" name="telefono" placeholder="<?= isset($errores['telefono']) ? $errores['telefono'] : "Teléfono de contacto" ?>" class="input-48 <?= isset($errores['telefono']) ? 'error' : '' ?>" value="<?php persistirDato($telefono) ?>">
 
 						<input class="input-48 <?= isset($errores['avatar']) ? 'error' : '' ?>" type="file" name="avatar">
-
-		        <input type="submit" value="Registrar" class="btn-enviar">
+									<span class="error-avatar" style="<?= !isset($errores['avatar']) ? 'display: none;' : '' ; ?>">
+										<?= isset($errores['avatar']) ? $errores['avatar'] : '' ;?>
+									</span>
+						<input type="submit" value="Registrar" class="btn-enviar">
 
 		        <p class="form-link">¿Ya tienes una cuenta?<a href="ingresar.php">Ingresa aquí</a></p>
-      </div>
+	    </div>
+
     </form>
     <a name="Ayuda" id="a"></a>
     <section class="preguntas-frecuentes">

@@ -63,7 +63,7 @@
     <form method="post" class="form-registrar" enctype="multipart/form-data">
       <h2 class="form-titulo">INICIAR SESIÓN</h2>
       <div class="contenedor-inputs">
-        <input type="email" name="correo" placeholder="Usuario o E-mail" class="input-48">
+        <input type="email" name="correo" placeholder="E-mail" class="input-48">
         <input type="password" name="clave" placeholder="Contraseña" class="input-48">
         <input type="submit" value="Ingresar" class="btn-enviar">
 

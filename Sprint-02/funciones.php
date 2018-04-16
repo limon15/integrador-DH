@@ -54,7 +54,7 @@
 		// Valido cada campo del formulario y por cada error genero una posición en el array de errores ($errores) que inicialmente estaba vacío
 
 		if ($name == '') { // Si el nombre está vacio
-			$errores['name'] = "Completá tu nombre";
+			$errores['name'] = "Completá tus nombres";
 		}
 		if ($apellidos == '') { // Si el apellido está vacio
 			$errores['apellidos'] = "Completá tus apellidos";
@@ -71,13 +71,13 @@
 			$errores['correo'] = "Completá tu correo";
 		} elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
 			// Si el correo no es un formato valido
-			$errores['correo'] = "Por favor, poner un correo de verdad";
+			$errores['correo'] = "Poné un correo real";
 		} elseif (existeEmail($correo)) { // Si el correo ya está registrado vacio
-			$errores['correo'] = "Este correo ya existe";
+			$errores['correo'] = "Este correo ya existe. Intentá ingresar desde la opcion INGRESA AQUI";
 		}
 
 		if ($clave == '' || $rclave == '') { // Si la contraseña o repetir contraseña está(n) vacio(s)
-			$errores['clave'] = "Por favor completá tus claves";
+			$errores['clave'] = "Completá tus claves";
 		} elseif (strlen($clave) < 7 || strlen($rclave) < 7) {
 			$errores['clave'] = "La clave debe tener al menos 7 caracteres"; // Si la clave tiene menos de 7 caracteres
 		} elseif ($clave != $rclave) {
@@ -85,12 +85,12 @@
 		}
 
 		if ($_FILES[$archivo]['error'] != UPLOAD_ERR_OK) { // Si no subieron ninguna imagen
-			$errores['avatar'] = "Che subí una foto";
+			$errores['avatar'] = "Subí una imagen";
 		} else {
 			$ext = strtolower(pathinfo($_FILES[$archivo]['name'], PATHINFO_EXTENSION));
 
 			if ($ext != 'jpg' && $ext != 'png' && $ext != 'jpeg') {
-				$errores['avatar'] = "Formatos admitidos: JPG o PNG";
+				$errores['avatar'] = "El formato del archivo no es el admitido. Por favor subí una imagen con formato JPG o PNG";
 			}
 
 		}
