@@ -32,7 +32,7 @@
     			<a href="#Ayuda">Ayuda</a>
     			<a href="#">Descuentos</a>
     	    <a href="#">Quiénes somos</a>
-          <a href="./logout.php">CERRAR SESION</a>
+          <a href="./logout.php">Cerrar sesión</a>
     		</nav>
     	</header>
 			<div class="bienvenida">
@@ -82,7 +82,7 @@
         <a href="#Ayuda">Ayuda</a>
         <a href="#">Descuentos</a>
         <a href="#">Quiénes somos</a>
-        <a href="./logout.php">CERRAR SESION</a>
+        <a href="./logout.php">Cerrar sesión</a>
       </section>
       <div class="social">
         <a href="#"><i class="ion-social-facebook-outline"></i></a>
