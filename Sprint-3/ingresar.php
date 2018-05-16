@@ -1,7 +1,7 @@
 <?php
-	require_once('funciones.php');
+	require_once('soporte.php');
 
-	if (estaLogueado()) {
+	if ($auth->estaLogueado()) {
 		header('location: perfil.php');
 		exit;
 	}
@@ -16,12 +16,12 @@
 	if ($_POST) {
 		$correo = trim($_POST['correo']);
 
-		$errores = validarLogin($_POST);
+		$errores = $validator->validarLogin($db);
 
 		if (empty($errores)) {
-			$usuario = existeEmail($correo);
+			$usuario = $db->existeEmail($correo);
 
-			loguear($usuario);
+			$auth->loguear($usuario->getId());
 
 			// Seteo la cookie
 			if (isset($_POST["rememberusername"])) {

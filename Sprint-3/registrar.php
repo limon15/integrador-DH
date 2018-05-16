@@ -1,53 +1,58 @@
 <?php
-	require_once('soporte.php');
+	require_once 'soporte.php';
+	// require_once 'funciones.php';
 
-	if (estaLogueado()) {
+	if ($auth->estaLogueado()) {
 		header('location: perfil.php');
 		exit;
 	}
-
-	// Variables para persistencia
-	$name = '';
-	$apellidos = '';
-	$correo = '';
-	$usuario = '';
-	$telefono = '';
-	$clave = '';
-	$rclave = '';
 
 	// Array de errores vacío
 	$errores = [];
 
 	// Si envían algo por $_POST
 	if ($_POST) {
-		// Persisto los datos con la información que envía el usuario por $_POST
-		$name = trim($_POST['name']);
-    $apellidos = trim($_POST['apellidos']);
-  	$correo = trim($_POST['correo']);
-  	$usuario = trim($_POST['usuario']);
-  	$telefono = trim($_POST['telefono']);
-  	$clave = trim($_POST['clave']);
-  	$rclave = trim($_POST['rclave']);
 
 		// Valido y guardo en errores
-		$errores = $validator->ValidateRegister($db, 'avatar');
+		$errores = $validator->validateRegister($db, 'avatar');
+
 
 		// Si el array de errorres está vacío, es porque no hubo errores, por lo tanto procedo con lo siguiente
+	// 	if (empty($errores)) {
+	//
+	// 		$errores = $db->guardarImagen('avatar', $correo);
+	//
+	//
+	// 		if (empty($errores)) {
+	// 			// En la variable $usuario, guardo al usuario creado con la función crearUsuario() la cual recibe los datos de $_POST y el avatar
+	// 			$usuario = $db->guardarUsuario($usuario, $db);
+	//
+	// 			// Logueo al usuario y por lo tanto no es necesario el re-direct
+	// 			header('location: ingresar.php'); exit;
+	// 		}
+	// 	}
+	// }
+
+	if (empty($errores)) {
+
+		$errores = $db->guardarImagen('avatar', $correo);
+
 		if (empty($errores)) {
+			$ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+			$avatar = 'img/' . $correo . '.' . $ext;
 
-			// $errores = guardarImagen('avatar');
+			$usuario = new Usuario($_POST["name"], $_POST["apellidos"], $_POST["correo"], $_POST["usuario"], $_POST["telefono"],$_POST["clave"], $avatar);
 
-			if (empty($errores)) {
-				// En la variable $usuario, guardo al usuario creado con la función crearUsuario() la cual recibe los datos de $_POST y el avatar
-				$ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-				$foto = 'img'/.
-				$usuario = $db->guardarUsuario($usuario, $db);
+			/* En la variable $usuario, guardo al usuario creado con la función crearUsuario()
+			la cual recibe los datos de $_POST y el avatar */
+			$usuarioGuardado = $db->guardarUsuario($usuario, $db);
 
-				// Logueo al usuario y por lo tanto no es necesario el re-direct
-				loguear($usuario);
-			}
+			// Logueo al usuario y por lo tanto no es necesario el re-direct
+			// loguear($usuario);
+			header('location: ingresar.php'); exit;
 		}
 	}
+}
 ?>
 
 <!DOCTYPE html>
@@ -84,22 +89,22 @@
         <br>Estás es el lugar correcto. Pero antes que nada, <a class="bienvenida-a" href="ingresar.php">iniciá sesión</a> o <a  class="bienvenida-a" href="#CrearCuenta">registrate.</a></p>
     </div>
     <a name="CrearCuenta" id="c"></a>
-    <form action="registrar.php" method="post" enctype="multipart/form-data" class="form-registrar">
+    <form method="post" enctype="multipart/form-data" class="form-registrar">
       <h2 class="form-titulo">CREA UNA CUENTA</h2>
       <div class="contenedor-inputs">
-						<input type="text" name="name" placeholder="<?= isset($errores['name']) ? $errores['name'] : "Nombres" ?>" class="input-48 <?= isset($errores['name']) ? 'error' : '' ?>" value="<?php persistirDato($name) ?>">
+						<input type="text" name="name" placeholder="<?= isset($errores['name']) ? $errores['name'] : "Nombres" ?>" class="input-48 <?= isset($errores['name']) ? 'error' : '' ?>" value="<?= $validator->persistirDato('name') ?>">
 
-		        <input type="text" name="apellidos" placeholder="<?= isset($errores['apellidos']) ? $errores['apellidos'] : "Apellidos" ?>" class="input-48  <?= isset($errores['apellidos']) ? 'error' : '' ?>" value="<?php persistirDato($apellidos) ?>">
+		        <input type="text" name="apellidos" placeholder="<?= isset($errores['apellidos']) ? $errores['apellidos'] : "Apellidos" ?>" class="input-48  <?= isset($errores['apellidos']) ? 'error' : '' ?>" value="<?php $validator->persistirDato('apellidos') ?>">
 
-		        <input type="email" name="correo" placeholder="<?= isset($errores['correo']) ? $errores['correo'] : "Correo" ?>" class="input-48  <?= isset($errores['correo']) ? 'error' : '' ?>" value="<?php persistirDato($correo) ?>">
+		        <input type="email" name="correo" placeholder="<?= isset($errores['correo']) ? $errores['correo'] : "Correo" ?>" class="input-48  <?= isset($errores['correo']) ? 'error' : '' ?>" value="<?php $validator->persistirDato('correo') ?>">
 
-		        <input type="text" name="usuario" placeholder="<?= isset($errores['usuario']) ? $errores['usuario'] : "Usuario" ?>" class="input-48 <?= isset($errores['usuario']) ? 'error' : '' ?>" value="<?php persistirDato($usuario) ?>">
+		        <input type="text" name="usuario" placeholder="<?= isset($errores['usuario']) ? $errores['usuario'] : "Usuario" ?>" class="input-48 <?= isset($errores['usuario']) ? 'error' : '' ?>" value="<?php $validator->persistirDato('usuario') ?>">
 
 		        <input type="password" name="clave" placeholder="<?= isset($errores['clave']) ? $errores['clave'] : "Ingresá una contraseña" ?>" class="input-48 <?= isset($errores['clave']) ? 'error' : '' ?>">
 
 		        <input type="password" name="rclave" placeholder="<?= isset($errores['clave']) ? $errores['clave'] : "Repetí tu contraseña" ?>" class="input-48 <?= isset($errores['clave']) ? 'error' : '' ?>">
 
-		        <input type="tel" name="telefono" placeholder="<?= isset($errores['telefono']) ? $errores['telefono'] : "Teléfono de contacto" ?>" class="input-48 <?= isset($errores['telefono']) ? 'error' : '' ?>" value="<?php persistirDato($telefono) ?>">
+		        <input type="tel" name="telefono" placeholder="<?= isset($errores['telefono']) ? $errores['telefono'] : "Teléfono de contacto" ?>" class="input-48 <?= isset($errores['telefono']) ? 'error' : '' ?>" value="<?php $validator->persistirDato('telefono') ?>">
 
 						<input class="input-48 <?= isset($errores['avatar']) ? 'error' : '' ?>" type="file" name="avatar">
 									<span class="error-avatar" style="<?= !isset($errores['avatar']) ? 'display: none;' : '' ; ?>">

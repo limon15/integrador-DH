@@ -1,12 +1,12 @@
 <?php
-	require_once('funciones.php');
+	require_once 'soporte.php';
 
-	if (!estaLogueado()) {
+	if (!$auth->estaLogueado()) {
 		header('location: ingresar.php');
 		exit;
 	}
 
-	$usuario = traerPorId($_SESSION['id']);
+	$usuario = $db->traerPorId($_SESSION['id']);
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -36,8 +36,8 @@
     		</nav>
     	</header>
 			<div class="bienvenida">
-        <img class="img-circle" src="<?=$usuario['foto']?>" width="100" height="100">
-	      <h2 class="bienvenida-titulo">¡Bienvenido/a <?=$usuario['name']?>!</h2>
+        <img class="img-circle" src="<?=$usuario->getPicture()?>" width="100" height="100">
+	      <h2 class="bienvenida-titulo">¡Bienvenido/a <?=$usuario->getName()?>!</h2>
 	        <p class="bienvenida-parrafo">Ahora podés buscar la farmacia de turno más cercana a tu ubicación.
 	        <br>Recordá dejar una valoración de la farmacia para futuros visitantes. Esperamos que disfrutes de la página ☺</p>
 	    </div>

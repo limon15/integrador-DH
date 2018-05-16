@@ -1,63 +1,91 @@
 <?php
 
-class Validator {
-  public function validar(DB $db, $archivo) {
-    $errores = [];
+	class Validator {
+		public function validateRegister(DB $db, $archivo) {
+			$errores = [];
 
-    $name = trim($_POST['name']);
-    $apellidos = trim($_POST['apellidos']);
-    $correo = trim($_POST['correo']);
-    $usuario = trim($_POST['usuario']);
-    $telefono = trim($_POST['telefono']);
-    $clave = trim($_POST['clave']);
-    $rclave = trim($_POST['rclave']);
+			$name = trim($_POST['name']);
+	    $apellidos = trim($_POST['apellidos']);
+	  	$correo = trim($_POST['correo']);
+	  	$usuario = trim($_POST['usuario']);
+	  	$telefono = trim($_POST['telefono']);
+	  	$clave = trim($_POST['clave']);
+	  	$rclave = trim($_POST['rclave']);
 
+			// Valido cada campo del formulario y por cada error genero una posición en el array de errores ($errores) que inicialmente estaba vacío
 
-    // Valido cada campo del formulario y por cada error genero una posición en el array de errores ($errores) que inicialmente estaba vacío
+			if ($name == '') { // Si el nombre está vacio
+				$errores['name'] = "Completa tu nombre";
+			}
 
-    if ($name == '') { // Si el nombre está vacio
-      $errores['name'] = "Completá tus nombres";
-    }
-    if ($apellidos == '') { // Si el apellido está vacio
-      $errores['apellidos'] = "Completá tus apellidos";
-    }
-    if ($usuario == '') { // Si el usuario está vacio
-      $errores['usuario'] = "Completá tu usuario";
-    }
-    if ($telefono == '') { // Si el teléfono está vacio
-      $errores['telefono'] = "Completá tu teléfono";
-    } elseif (!is_numeric($telefono)) {
-      $errores['telefono'] = "El número de teléfono no debe contener letras"; //Si no es un número de teléfono
-    }
-    if ($correo == '') { // Si el correo está vacio
-      $errores['correo'] = "Completá tu correo";
-    } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-      // Si el correo no es un formato valido
-      $errores['correo'] = "Poné un correo real";
-    } elseif ($db->existeEmail($correo)) { // Si el correo ya está registrado vacio
-      $errores['correo'] = "Este correo ya existe. Intentá ingresar desde la opcion INGRESA AQUI";
-    }
+			if ($apellidos == '') {
+				$errores['apellidos'] = "Completa tu apellido";
+			}
 
-    if ($clave == '' || $rclave == '') { // Si la contraseña o repetir contraseña está(n) vacio(s)
-      $errores['clave'] = "Completá tus claves";
-    } elseif (strlen($clave) < 7 || strlen($rclave) < 7) {
-      $errores['clave'] = "La clave debe tener al menos 7 caracteres"; // Si la clave tiene menos de 7 caracteres
-    } elseif ($clave != $rclave) {
-      $errores['clave'] = "Tus contraseñas no coinciden"; // Si las claves no coinciden
-    }
+			if ($correo == '') { // Si el email está vacio
+				$errores['correo'] = "Completa tu email";
+			} elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+				// Si el email no es un formato valido
+				$errores['correo'] = "Por favor poner un email de verdad, gatx.";
+			} elseif ($db->existeEmail($correo)) { // Si el email ya está registrado vacio
+				$errores['correo'] = "Este email ya existe.";
+			}
 
-    if ($_FILES[$archivo]['error'] != UPLOAD_ERR_OK) { // Si no subieron ninguna imagen
-      $errores['avatar'] = "Subí una imagen";
-    } else {
-      $ext = strtolower(pathinfo($_FILES[$archivo]['name'], PATHINFO_EXTENSION));
+			if ($usuario == '') {
+				$errores['usuario'] = "Completá tu usuario";
+			}
 
-      if ($ext != 'jpg' && $ext != 'png' && $ext != 'jpeg') {
-        $errores['avatar'] = "El formato del archivo no es el admitido. Por favor subí una imagen con formato JPG o PNG";
-      }
+			if ($telefono == '') {
+				$errores['telefono'] = "Completá tu teléfono";
+			}
 
-    }
+			if ($clave == '' || $rclave == '') { // Si la contraseña o repetir contraseña está(n) vacio(s)
+				$errores['clave'] = "Por favor completa tus passwords";
+			} elseif ($clave != $rclave) {
+				$errores['clave'] = "Tus contraseñas no coinciden";
+			}
 
-    return $errores;
-  }
-}
- ?>
+			if ($_FILES[$archivo]['error'] != UPLOAD_ERR_OK) { // Si no subieron ninguna imagen
+				$errores['avatar'] = "Che subí una foto";
+			} else {
+				$ext = strtolower(pathinfo($_FILES[$archivo]['name'], PATHINFO_EXTENSION));
+
+				if ($ext != 'jpg' && $ext != 'png' && $ext != 'jpeg') {
+					$errores['avatar'] = "Formatos admitidos: JPG o PNG";
+				}
+
+			}
+
+			return $errores;
+		}
+
+		public function persistirDato($input){
+			if (isset($_POST[$input])) { // Si envían algo por $_POST
+				return $_POST[$input];
+			}
+		}
+
+		public function validarLogin(DB $db) {
+			$arrayADevolver = [];
+			$correo = trim($_POST['correo']);
+			$clave = trim($_POST['clave']);
+
+			if ($correo == '') {
+				$arrayADevolver['correo'] = 'Completá tu email';
+			} elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+				$arrayADevolver['correo'] = 'Poné un formato de email válido';
+			} elseif (!$usuario = $db->existeEmail($correo)) {
+				$arrayADevolver['correo'] = 'Este email no está registrado';
+			} else {
+				// Si el mail existe, me guardo al usuario dueño del mismo
+				// $usuario = existeEmail($email);
+
+	 			// Pregunto si coindice la password escrita con la guardada en el JSON
+	      	if (!password_verify($clave, $usuario->getPassword())) {
+	         	$arrayADevolver['clave'] = "Credenciales incorrectas";
+	      	}
+			}
+
+			return $arrayADevolver;
+		}
+	}

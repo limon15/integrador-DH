@@ -1,94 +1,81 @@
 <?php
 
-class Usuario {
-  private $id;
-  private $name;
-  private $apellidos;
-  private $correo;
-  private $usuario;
-  private $telefono;
-  private $clave;
-  private $foto;
+	class Usuario {
+		private $id;
+		private $name;
+		private $apellidos;
+		private $correo;
+		private $usuario;
+		private $telefono;
+		private $clave;
+		private $avatar;
 
-public function __construct($name, $apellidos, $correo, $usuario, $telefono, $clave, $foto) {
-  $this->name = $name;
-  $this->name = $apellidos;
-  $this->name = $correo;
-  $this->name = $usuario;
-  $this->name = $telefono;
-  $this->name = $clave;
-  $this->name = $clave;
+		// $name = '';
+		// $apellidos = '';
+		// $correo = '';
+		// $usuario = '';
+		// $telefono = '';
+		// $clave = '';
+		// $rclave = '';
 
-  public function crearUsuario(DB $db) {
-    $usuario = [
-      'id' => $db->traerUltimoID(),
-      'name' => $data['name'],
-      'apellidos' => $data['apellidos'],
-      'correo' => $data['correo'],
-      'usuario' => $data['usuario'],
-      'telefono' => $data['telefono'],
-      'clave' => password_hash($data['clave'], PASSWORD_DEFAULT),
-      'rclave' => password_hash($data['rclave'], PASSWORD_DEFAULT),
-      'foto' => 'img/' . $data['correo'] . '.' . pathinfo($_FILES[$imagen]['name'], PATHINFO_EXTENSION)
-    ];
+		public function __construct ($name, $apellidos, $correo, $usuario, $telefono, $clave, $avatar) {
+			$this->name = $name;
+			$this->apellidos = $apellidos;
+			$this->correo = $correo;
+			$this->usuario = $usuario;
+			$this->telefono = $telefono;
+			$this->clave = $clave;
+			$this->avatar = $avatar;
+		}
 
- public function setName($name) {
-   $this->name = $name;
- }
+		public function crearUsuario(DB $db) {
+			return [
+				'id' => $db->traerUltimoID(),
+				'name' => $this->name,
+				'apellidos' => $this->apellidos,
+				'correo' => $this->correo,
+				'usuario' => $this->usuario,
+				'telefono' => $this->telefono,
+				'clave' => $this->setPassword($this->clave),
+				'avatar' => $this->avatar
+			];
 
- public function getName($name) {
-   return $this->name;
- }
+		   // return $usuario;
+		}
 
- public function setApellidos($apellidos) {
-   $this->apellidos = $apellidos;
- }
+		public function setname($name) {
+			$this->name = $name;
+		}
 
- public function getApellidos($apellidos) {
-   return $this->apellidos;
- }
+		public function getName() {
+			return $this->name;
+		}
 
- public function setCorreo($correo) {
-   $this->correo = $correo;
- }
+		public function getId() {
+			return $this->id;
+		}
 
- public function getCorreo($correo) {
-   return $this->correo;
- }
+		public function setId($id) {
+			$this->id = $id;
+		}
 
- public function setUsuario($usuario) {
-   $this->usuario = $usuario;
- }
+		public function getEmail() {
+			return $this->correo;
+		}
 
- public function getUsuario($usuario) {
-   return $this->usuario;
- }
+		public function setEmail($correo) {
+			$this->correo = $correo;
+		}
 
- public function setTelefono($telefono) {
-   $this->telefono = $telefono;
- }
+		public function getPassword() {
+			return $this->clave;
+		}
 
- public function getTelefono($telefono) {
-   return $this->telefono;
- }
+		public function setPassword($clave) {
+			return password_hash($clave, PASSWORD_DEFAULT);
+		}
 
- public function setClave($clave) {
-   $this->clave = $clave;
- }
-
- public function getClave($clave) {
-   return $this->clave;
- }
-
- public function setFoto($foto) {
-   $this->foto = $foto;
- }
-
- public function getFoto($foto) {
-   return $this->foto;
- }
-
-
-}
-
- ?>
+		public function getPicture() {
+			return $this->avatar;
+		}
+	}
