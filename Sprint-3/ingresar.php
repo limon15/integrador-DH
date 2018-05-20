@@ -21,15 +21,13 @@
 		if (empty($errores)) {
 			$usuario = $db->existeEmail($correo);
 
-			$auth->loguear($usuario->getId());
-
 			// Seteo la cookie
 			if (isset($_POST["rememberusername"])) {
-	        setcookie('id', $usuario['id'], time() + 3600 * 24 * 30);
+	        setcookie('id', $usuario->getId(), time() + 3600 * 24 * 30);
 	      }
 
-			header('location: perfil.php');
-			exit;
+			$auth->loguear($usuario->getId());
+
 		}
 	}
 ?>

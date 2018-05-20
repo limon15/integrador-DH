@@ -15,6 +15,7 @@
 
 		// Valido y guardo en errores
 		$errores = $validator->validateRegister($db, 'avatar');
+		$correo = trim($_POST['correo']);
 
 
 		// Si el array de errorres está vacío, es porque no hubo errores, por lo tanto procedo con lo siguiente
