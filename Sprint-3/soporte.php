@@ -6,7 +6,12 @@
 	$auth = new Auth();
 	$validator = new Validator();
 
-	$typeDB = 'json';
+	if (isset($_POST['crearDB'])) {
+		$typeDB = 'mysql';
+	} else {
+		$typeDB = 'json';
+	}
+
 
 	switch ($typeDB) {
 		case 'json':

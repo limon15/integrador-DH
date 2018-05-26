@@ -39,11 +39,10 @@
 			// Recorremos el array y generamos por cada usuario un array del usuario
 			foreach ($usuariosArray as $usuario) {
 				$usuarioJSON = json_decode($usuario, true);
-				$usuario = new Usuario($usuarioJSON["name"], $usuarioJSON["apellidos"], $usuarioJSON["correo"], $usuarioJSON["usuario"], $usuarioJSON["telefono"], $usuarioJSON["clave"], $usuarioJSON['avatar']);
+				$usuario = new Usuario($usuarioJSON["name"], $usuarioJSON["apellidos"], $usuarioJSON["correo"], $usuarioJSON["usuario"], $usuarioJSON["telefono"], $usuarioJSON["clave"], $usuarioJSON["avatar"]);
 				$usuario->setId($usuarioJSON['id']);
 				$usuarios[] = $usuario;
 			}
-
 			return $usuarios;
 		}
 

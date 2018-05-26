@@ -77,14 +77,11 @@
 			} elseif (!$usuario = $db->existeEmail($correo)) {
 				$arrayADevolver['correo'] = 'Este email no está registrado';
 			} else {
-				// Si el mail existe, me guardo al usuario dueño del mismo
-				// $usuario = existeEmail($email);
-
-	 			// Pregunto si coindice la password escrita con la guardada en el JSON
-	      	if (!password_verify($clave, $usuario->getPassword())) {
+				// Pregunto si coindice la password escrita con la guardada en el JSON
+				if (!password_verify($clave, $usuario->getPassword())) {
 	         	$arrayADevolver['clave'] = "Credenciales incorrectas";
-	      	}
-			}
+	         }
+	      }
 
 			return $arrayADevolver;
 		}

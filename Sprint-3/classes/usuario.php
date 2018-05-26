@@ -10,13 +10,6 @@
 		private $clave;
 		private $avatar;
 
-		// $name = '';
-		// $apellidos = '';
-		// $correo = '';
-		// $usuario = '';
-		// $telefono = '';
-		// $clave = '';
-		// $rclave = '';
 
 		public function __construct ($name, $apellidos, $correo, $usuario, $telefono, $clave, $avatar) {
 			$this->name = $name;
@@ -40,7 +33,6 @@
 				'avatar' => $this->avatar
 			];
 
-		   // return $usuario;
 		}
 
 		public function setname($name) {
@@ -49,6 +41,10 @@
 
 		public function getName() {
 			return $this->name;
+		}
+
+		public function getLastName() {
+			return $this->apellidos;
 		}
 
 		public function getId() {
@@ -65,6 +61,14 @@
 
 		public function setEmail($correo) {
 			$this->correo = $correo;
+		}
+
+		public function getUser() {
+			return $this->usuario;
+		}
+
+		public function getPhone() {
+			return $this->telefono;
 		}
 
 		public function getPassword() {

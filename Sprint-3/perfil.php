@@ -1,5 +1,15 @@
 <?php
 	require_once 'soporte.php';
+	require_once 'script.php';
+	// return hayConexion();
+	// return consultaDB();
+	if(!hayConexion()){
+		header("location:botones.php");
+		exit();
+	}elseif(consultaDB() == false){
+		header("location:botones.php");
+		exit();
+	}
 
 	if (!$auth->estaLogueado()) {
 		header('location: ingresar.php');

@@ -1,48 +1,56 @@
 <?php
-	require_once('soporte.php');
+	// require_once 'script.php';
+	// require_once 'funciones.php';
+	require_once 'soporte.php';
 	require_once 'script.php';
 	// return hayConexion();
 	// return consultaDB();
 	if(!hayConexion()){
-		header("location:botones.php");
-		exit();
+	  header("location:botones.php");
+	  exit();
 	}elseif(consultaDB() == false){
-		header("location:botones.php");
-		exit();
+	  header("location:botones.php");
+	  exit();
 	}
+
 
 	if ($auth->estaLogueado()) {
 		header('location: perfil.php');
 		exit;
 	}
 
-	// Variables para persistencia
-	$correo = '';
-
 	// Array de errores vacío
 	$errores = [];
 
 	// Si envían algo por $_POST
 	if ($_POST) {
-		$correo = trim($_POST['correo']);
 
-		$errores = $validator->validarLogin($db);
+		// Valido y guardo en errores
+		$errores = $validator->validateRegister($db, 'avatar');
+
+	if (empty($errores)) {
+
+		$errores = $db->guardarImagen('avatar', $correo);
 
 		if (empty($errores)) {
-			$usuario = $db->existeEmail($correo);
+			$ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+			$avatar = 'img/' . $correo . '.' . $ext;
 
-			$auth->loguear($usuario->getId());
+			$usuario = new Usuario($_POST["name"], $_POST["apellidos"], $_POST["correo"], $_POST["usuario"], $_POST["telefono"],$_POST["clave"], $avatar);
 
-			// Seteo la cookie
-			if (isset($_POST["rememberusername"])) {
-	        setcookie('id', $usuario['id'], time() + 3600 * 24 * 30);
-	      }
+			/* En la variable $usuario, guardo al usuario creado con la función crearUsuario()
+			la cual recibe los datos de $_POST y el avatar */
+			$usuarioGuardado = $db->guardarUsuario($usuario, $db);
 
-			header('location: perfil.php');
-			exit;
+			// Logueo al usuario y por lo tanto no es necesario el re-direct
+			// loguear($usuario);
+			header('location: ingresar.php');
+      exit;
 		}
 	}
+}
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -53,39 +61,58 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <title>Iniciar sesión</title>
+    <title>Formulario de registro</title>
   </head>
   <body>
-    <div class="container">
-      <header>
-    		<div class="logo">
-    			<img src="images/logo-farmacia.png" width="150" alt="">
-    		    <a href="#">FARMACIAS DE TURNO</a>
-    		</div>
-    		<nav>
-    			<a href="./ingresar.php">Inicio</a>
-    			<a href="#Ayuda">Ayuda</a>
-    			<a href="#">Descuentos</a>
-    	    <a href="#">Quiénes somos</a>
-          <a href="./ingresar.php">Iniciar sesión</a>
-    		</nav>
-    	</header>
 
-    <form method="post" class="form-registrar" enctype="multipart/form-data">
-      <h2 class="form-titulo">INICIAR SESIÓN</h2>
-      <div class="contenedor-inputs">
-        <input type="email" name="correo" placeholder="E-mail" class="input-48">
-        <input type="password" name="clave" placeholder="Contraseña" class="input-48">
-        <input type="submit" value="Ingresar" class="btn-enviar">
-
-        <label for="rememberusername" class="input-100">
-          <input type="checkbox" name="rememberusername" checked="checked">
-          Recordar nombre de usuario
-        </label>
-        <p class="form-link">¿No tienes una cuenta?<a href="index.php">Regístrate</a></p>
-      </form>
+  <div class="container">
+    <header>
+			<div class="logo">
+				<img src="images/logo-farmacia.png" width="150" alt="">
+				<a href="#">FARMACIAS DE TURNO</a>
+			</div>
+			<nav>
+				<a href="./index.php">Inicio</a>
+				<a href="#Ayuda">Ayuda</a>
+				<a href="#">Descuentos</a>
+	      <a href="#">Quiénes somos</a>
+        <a href="./ingresar.php">Iniciar sesión</a>
+			</nav>
+		</header>
+    <div class="bienvenida">
+      <h2 class="bienvenida-titulo">¡BIENVENIDO!</h2>
+        <p class="bienvenida-parrafo">¿Buscás la farmacia de turno más cercada a tu domicilio?
+        <br>Estás es el lugar correcto. Pero antes que nada, <a class="bienvenida-a" href="ingresar.php">iniciá sesión</a> o <a  class="bienvenida-a" href="#CrearCuenta">registrate.</a></p>
     </div>
+    <a name="CrearCuenta" id="c"></a>
+    <form method="post" enctype="multipart/form-data" class="form-registrar">
+      <h2 class="form-titulo">CREA UNA CUENTA</h2>
+      <div class="contenedor-inputs">
+						<input type="text" name="name" placeholder="<?= isset($errores['name']) ? $errores['name'] : "Nombres" ?>" class="input-48 <?= isset($errores['name']) ? 'error' : '' ?>" value="<?= $validator->persistirDato('name') ?>">
 
+		        <input type="text" name="apellidos" placeholder="<?= isset($errores['apellidos']) ? $errores['apellidos'] : "Apellidos" ?>" class="input-48  <?= isset($errores['apellidos']) ? 'error' : '' ?>" value="<?php $validator->persistirDato('apellidos') ?>">
+
+		        <input type="email" name="correo" placeholder="<?= isset($errores['correo']) ? $errores['correo'] : "Correo" ?>" class="input-48  <?= isset($errores['correo']) ? 'error' : '' ?>" value="<?php $validator->persistirDato('correo') ?>">
+
+		        <input type="text" name="usuario" placeholder="<?= isset($errores['usuario']) ? $errores['usuario'] : "Usuario" ?>" class="input-48 <?= isset($errores['usuario']) ? 'error' : '' ?>" value="<?php $validator->persistirDato('usuario') ?>">
+
+		        <input type="password" name="clave" placeholder="<?= isset($errores['clave']) ? $errores['clave'] : "Ingresá una contraseña" ?>" class="input-48 <?= isset($errores['clave']) ? 'error' : '' ?>">
+
+		        <input type="password" name="rclave" placeholder="<?= isset($errores['clave']) ? $errores['clave'] : "Repetí tu contraseña" ?>" class="input-48 <?= isset($errores['clave']) ? 'error' : '' ?>">
+
+		        <input type="tel" name="telefono" placeholder="<?= isset($errores['telefono']) ? $errores['telefono'] : "Teléfono de contacto" ?>" class="input-48 <?= isset($errores['telefono']) ? 'error' : '' ?>" value="<?php $validator->persistirDato('telefono') ?>">
+
+						<input class="input-48 <?= isset($errores['avatar']) ? 'error' : '' ?>" type="file" name="avatar">
+									<span class="error-avatar" style="<?= !isset($errores['avatar']) ? 'display: none;' : '' ; ?>">
+										<?= isset($errores['avatar']) ? $errores['avatar'] : '' ;?>
+									</span>
+						<input type="submit" value="Registrar" class="btn-enviar">
+
+		        <p class="form-link">¿Ya tienes una cuenta?<a href="ingresar.php">Ingresa aquí</a></p>
+	    </div>
+
+    </form>
+    <a name="Ayuda" id="a"></a>
     <section class="preguntas-frecuentes">
       <div class="wrap">
       <h2 class="FAQS">Preguntas frecuentes</h2>
