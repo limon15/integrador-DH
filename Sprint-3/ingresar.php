@@ -74,8 +74,14 @@
     <form method="post" class="form-registrar" enctype="multipart/form-data">
       <h2 class="form-titulo">INICIAR SESIÓN</h2>
       <div class="contenedor-inputs">
-        <input type="email" name="correo" placeholder="E-mail" class="input-48">
-        <input type="password" name="clave" placeholder="Contraseña" class="input-48">
+				<div class="formu-control">
+					<input type="email" name="correo" placeholder="Ingresá tus email" class="<?= isset($errores['email']) ? 'input-error' : NULL ?>" value="<?= $validator->persistirDato('correo') ?>">
+					<span class="error-text" style="<?= isset($errores['correo']) ? 'display: block;' : NULL ?>"><?= isset($errores['correo']) ? $errores['correo'] : NULL ?></span>
+				</div>
+				<div class="formu-control">
+					<input type="password" name="clave" placeholder="Insertá una contraseña" class="<?= isset($errores['clave']) ? 'input-error' : NULL ?>" value="<?php $validator->persistirDato('clave')?>">
+					<span class="error-text" style="<?= isset($errores['clave']) ? 'display: block;' : NULL ?>"><?= isset($errores['clave']) ? $errores['clave'] : NULL ?></span>
+				</div>
         <input type="submit" value="Ingresar" class="btn-enviar">
 
         <label for="rememberusername" class="input-100">

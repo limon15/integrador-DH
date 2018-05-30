@@ -97,11 +97,11 @@
 					// Subo la imagen definitivamente
 					move_uploaded_file($archivoFisico, $rutaFinalConNombre);
 				} else {
-					$errores['imagen'] = 'El formato tiene que ser JPG, JPEG, PNG o GIF';
+					$errores['avatar'] = 'El formato tiene que ser JPG, JPEG, PNG o GIF';
 				}
 			} else {
 				// Genero error si no se puede subir
-				$errores['imagen'] = 'No subiste nada';
+				$errores['avatar'] = 'No subiste nada';
 			}
 
 			return $errores;

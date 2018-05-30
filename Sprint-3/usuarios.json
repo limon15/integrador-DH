@@ -1,2 +1,4 @@
 {"id":1,"name":"Maximiliano","apellidos":"Coppola","correo":"maxicopp@gmail.com","usuario":"maximiliano","telefono":"1166247568","clave":"$2y$10$87n6gGtlfDIAs9S6L6I8KeOnifzZsQDJIBilRMCI0Qe9JzERaWsw6","rclave":"$2y$10$8PVeV1VQoCob5MQn0QiVlODLE6YxDT2oiV0qBZ1r4DtpolFfO2OAW","avatar":"img\/maxicopp@gmail.com.jpg"}
 {"id":2,"name":"Maximiliano","apellidos":"Coppola","correo":"jaco@gmail.com","usuario":"maxicopp","telefono":"1","clave":"$2y$10$fE9mfsYDe92GCOUJnKAIMuw529qWgqAs7jPQH29OHaqapZLRGY91i","avatar":"img\/.jpg"}
+{"id":3,"name":"Sofia","apellidos":"Martignetti","correo":"so.martignetti@gmail.com","usuario":"so.martignetti@gmail.com","telefono":"42936406","clave":"$2y$10$5SrUp6\/b1DhEo5hsqejWpuZGNAQhJCJXYtkphvG178bupoJkWqePa","avatar":"img\/.jpg"}
+{"id":4,"name":"Lola","apellidos":"Flores","correo":"lolaf@gmail.com","usuario":"lolaf","telefono":"42936406","clave":"$2y$10$8iVLptqL2cPUiU1vrW.WjuOJSIB2OYHKpmbJXbplWjEGKxye9sCia","avatar":"img\/.jpg"}

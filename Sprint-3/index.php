@@ -69,10 +69,10 @@
     <header>
 			<div class="logo">
 				<img src="images/logo-farmacia.png" width="150" alt="">
-				<a href="#">FARMACIAS DE TURNO</a>
+				<a href="#">FARMACIA DE TURNO</a>
 			</div>
 			<nav>
-				<a href="./index.php">Inicio</a>
+				<a href="./registrar.php">Inicio</a>
 				<a href="#Ayuda">Ayuda</a>
 				<a href="#">Descuentos</a>
 	      <a href="#">Quiénes somos</a>
@@ -88,25 +88,49 @@
     <form method="post" enctype="multipart/form-data" class="form-registrar">
       <h2 class="form-titulo">CREA UNA CUENTA</h2>
       <div class="contenedor-inputs">
-						<input type="text" name="name" placeholder="<?= isset($errores['name']) ? $errores['name'] : "Nombres" ?>" class="input-48 <?= isset($errores['name']) ? 'error' : '' ?>" value="<?= $validator->persistirDato('name') ?>">
+						<div class="formu-control">
+							<input type="text" name="name" placeholder="Nombres" class="<?= isset($errores['name']) ? 'input-error' : NULL ?>" value="<?= $validator->persistirDato('name') ?>">
+							<span class="error-text" style="<?= isset($errores['name']) ? 'display: block;' : NULL ?>"><?= isset($errores['name']) ? $errores['name'] : NULL ?></span>
+						</div>
 
-		        <input type="text" name="apellidos" placeholder="<?= isset($errores['apellidos']) ? $errores['apellidos'] : "Apellidos" ?>" class="input-48  <?= isset($errores['apellidos']) ? 'error' : '' ?>" value="<?php $validator->persistirDato('apellidos') ?>">
+						<div class="formu-control">
+		        	<input type="text" name="apellidos" placeholder="Apellidos" class="<?= isset($errores['apellidos']) ? 'input-error' : NULL ?>" value="<?php $validator->persistirDato('apellidos') ?>">
+							<span class="error-text" style="<?= isset($errores['apellidos']) ? 'display: block;' : NULL ?>"><?= isset($errores['apellidos']) ? $errores['apellidos'] : NULL ?></span>
+						</div>
 
-		        <input type="email" name="correo" placeholder="<?= isset($errores['correo']) ? $errores['correo'] : "Correo" ?>" class="input-48  <?= isset($errores['correo']) ? 'error' : '' ?>" value="<?php $validator->persistirDato('correo') ?>">
+						<div class="formu-control">
+		        	<input type="email" name="correo" placeholder="Email" class="<?= isset($errores['correo']) ? 'input-error' : NULL ?>" value="<?php $validator->persistirDato('correo') ?>">
+							<span class="error-text" style="<?= isset($errores['correo']) ? 'display: block;' : NULL ?>"><?= isset($errores['correo']) ? $errores['correo'] : NULL ?></span>
+						</div>
 
-		        <input type="text" name="usuario" placeholder="<?= isset($errores['usuario']) ? $errores['usuario'] : "Usuario" ?>" class="input-48 <?= isset($errores['usuario']) ? 'error' : '' ?>" value="<?php $validator->persistirDato('usuario') ?>">
+						<div class="formu-control">
+							<input type="text" name="usuario" placeholder="Usuario" class="<?= isset($errores['usuario']) ? 'input-error' : NULL ?>" value="<?php $validator->persistirDato('usuario') ?>">
+							<span class="error-text" style="<?= isset($errores['usuario']) ? 'display: block;' : NULL ?>"><?= isset($errores['usuario']) ? $errores['usuario'] : NULL ?></span>
+						</div>
 
-		        <input type="password" name="clave" placeholder="<?= isset($errores['clave']) ? $errores['clave'] : "Ingresá una contraseña" ?>" class="input-48 <?= isset($errores['clave']) ? 'error' : '' ?>">
+						<div class="formu-control">
+							<input type="password" name="clave" placeholder="Contraseña" class="<?= isset($errores['clave']) ? 'input-error' : NULL ?>" value="<?php $validator->persistirDato('clave')?>">
+							<span class="error-text" style="<?= isset($errores['clave']) ? 'display: block;' : NULL ?>"><?= isset($errores['clave']) ? $errores['clave'] : NULL ?></span>
+						</div>
 
-		        <input type="password" name="rclave" placeholder="<?= isset($errores['clave']) ? $errores['clave'] : "Repetí tu contraseña" ?>" class="input-48 <?= isset($errores['clave']) ? 'error' : '' ?>">
+						<div class="formu-control">
+							<input type="password" name="rclave" placeholder="Volvé a ingresar tu contraseña" class="<?= isset($errores['clave']) ? 'input-error' : NULL ?>" value="<?php $validator->persistirDato('rclave')?>">
+							<span class="error-text" style="<?= isset($errores['clave']) ? 'display: block;' : NULL ?>"><?= isset($errores['clave']) ? $errores['clave'] : NULL ?></span>
+						</div>
 
-		        <input type="tel" name="telefono" placeholder="<?= isset($errores['telefono']) ? $errores['telefono'] : "Teléfono de contacto" ?>" class="input-48 <?= isset($errores['telefono']) ? 'error' : '' ?>" value="<?php $validator->persistirDato('telefono') ?>">
+						<div class="formu-control">
+							<input type="tel" name="telefono" placeholder="Teléfono de contacto" class="<?= isset($errores['telefono']) ? 'input-error' : NULL ?>" value="<?php $validator->persistirDato('telefono')?>">
+							<span class="error-text" style="<?= isset($errores['telefono']) ? 'display: block;' : NULL ?>"><?= isset($errores['telefono']) ? $errores['telefono'] : NULL ?></span>
+						</div>
 
-						<input class="input-48 <?= isset($errores['avatar']) ? 'error' : '' ?>" type="file" name="avatar">
-									<span class="error-avatar" style="<?= !isset($errores['avatar']) ? 'display: none;' : '' ; ?>">
-										<?= isset($errores['avatar']) ? $errores['avatar'] : '' ;?>
-									</span>
-						<input type="submit" value="Registrar" class="btn-enviar">
+						<div class="formu-control">
+							<input type="file" name="avatar" class="<?= isset($errores['avatar']) ? 'input-error' : NULL ?>">
+							<span class="error-text" style="<?= isset($errores['avatar']) ? 'display: block;' : NULL ?>"><?= isset($errores['avatar']) ? $errores['avatar'] : NULL ?></span>
+						</div>
+						<br><br>
+						<div class="formu-control" style="align-items: center; justify-content: center;">
+							<input style="" type="submit" value="Registrar" class="btn-enviar">
+						</div>
 
 		        <p class="form-link">¿Ya tienes una cuenta?<a href="ingresar.php">Ingresa aquí</a></p>
 	    </div>
@@ -131,16 +155,16 @@
       </details>
       <details>
          <summary>¿Cómo localizo la farmacia de turno más cercana a mi domicilio?</summary>
-         <p>Ingresá a nuestra web<a href="https://www.farmaciasdeturno.com/">Farmacias de Turno.</a><br>Aplicá los prefiltros necesarios, podrás buscar por nombre de farmacia y/o zona.</p>
+         <p>Ingresá a nuestra web<a href="https://www.farmaciadeturno.com.ar/">Farmacias de Turno.</a><br>Aplicá los prefiltros necesarios, podrás buscar por nombre de farmacia y/o zona.</p>
       </details>
       <details>
          <summary>¿Cómo puntúo una farmacia?</summary>
-         <p>Antes que nada <a href="https://www.farmaciasdeturno.com/login.html">iniciá sesión o registrate.</a>Sólo los usuarios registrados podrán puntuar una farmacia.
+         <p>Antes que nada <a href="https://www.farmaciadeturno.com.ar/index.php">iniciá sesión o registrate.</a>Sólo los usuarios registrados podrán puntuar una farmacia.
            Para poder valorar una farmacia tendrás que previamente buscarla y marcarla como "VISITADA", luego podrás valorarla con una puntuación de 1 a 5 estrellas y si querés, agregar un comentario sobre tu experiencia.</p>
       </details>
       <details>
          <summary>¿Cómo puedo acceder fácilmente a descuentos y ofertas de farmacias cercanas?</summary>
-         <p>¡Muy fácil! Subscribite a nuestro<a href="https://www.farmaciasdeturno.com/login.html">newsletter</a>y vas a estar recibiendo ofertas y descuentos en tu zona ¡Especiales para vos ♥!</p>
+         <p>¡Muy fácil! Subscribite a nuestro<a href="https://www.farmaciadeturno.com.ar/index.php">newsletter</a>y vas a estar recibiendo ofertas y descuentos en tu zona ¡Especiales para vos ♥!</p>
       </details>
     <div class="image-bottom">
         <h3>¿Dudas, quejas, recomendaciones?<br> Contactanos a través de nuestro formulario.</h3>
@@ -164,7 +188,7 @@
         <a href="#"><i class="social ion-social-youtube-outline"></i></a>
       </div>
       <section class="links">
-        <p>farmaciasdeturno TM Copyright © 2018 All rights reserved to farmaciasdeturno.com.</p>
+        <p>FarmaciaDeTurno TM Copyright © 2018 All rights reserved to www.farmaciadeturno.com.ar</p>
       </section>
     </footer>
   </div>

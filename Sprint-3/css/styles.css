@@ -81,26 +81,46 @@ input, .form-link, .input-100, p, span, li {
   margin-bottom: 20px;
 }
 
-input{
-  margin-bottom: 15px;
+
+.formu-control {
+  width: 48.5%;
+  /* border: solid 1px green; */
+  margin-bottom: 30px;
+}
+
+.formu-control input{
+  /* margin-bottom: 15px; */
+  display: block;
   padding: 15px;
   font-size: 16px;
   border-radius: 10px;
   border: 1px solid darkgray;
+  width: 100%;
 }
 
-.input-48{
-  width: 48%;
-  outline: none;
+.formu-control .input-error {
+    border: solid 1px red;
+    box-shadow: 0 0 10px 1px red;
 }
 
-.error {
-  border: solid 1px red;
-  box-shadow: 0 0 5px 2px red;
-}
-.error::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+.formu-control .error-text {
+  display: none;
   color: red;
 }
+
+/* .input-48{
+  width: 48%;
+  outline: none;
+} */
+
+/* .error {
+  border: solid 1px green;
+  box-shadow: 0 0 5px 2px green;
+}
+.error::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  /* color: green;
+  }*/
+
 
 .input-100 {
   width: 100%;
@@ -418,6 +438,10 @@ footer .social a{
 
   aside .widget{
     flex-grow: 1;
+  }
+
+  .formu-control {
+    width:100%;
   }
 }
 

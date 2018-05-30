@@ -15,20 +15,20 @@
 			// Valido cada campo del formulario y por cada error genero una posición en el array de errores ($errores) que inicialmente estaba vacío
 
 			if ($name == '') { // Si el nombre está vacio
-				$errores['name'] = "Completa tu nombre";
+				$errores['name'] = "Completá tus nombres";
 			}
 
 			if ($apellidos == '') {
-				$errores['apellidos'] = "Completa tu apellido";
+				$errores['apellidos'] = "Completá tus apellidos";
 			}
 
 			if ($correo == '') { // Si el email está vacio
-				$errores['correo'] = "Completa tu email";
+				$errores['correo'] = "Completá tu email";
 			} elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
 				// Si el email no es un formato valido
-				$errores['correo'] = "Por favor poner un email de verdad, gatx.";
+				$errores['correo'] = "Poné un formato de email válido";
 			} elseif ($db->existeEmail($correo)) { // Si el email ya está registrado vacio
-				$errores['correo'] = "Este email ya existe.";
+				$errores['correo'] = "El email ya existe en nuestra base de datos.";
 			}
 
 			if ($usuario == '') {
@@ -40,13 +40,13 @@
 			}
 
 			if ($clave == '' || $rclave == '') { // Si la contraseña o repetir contraseña está(n) vacio(s)
-				$errores['clave'] = "Por favor completa tus passwords";
+				$errores['clave'] = "Ingresá tu clave";
 			} elseif ($clave != $rclave) {
 				$errores['clave'] = "Tus contraseñas no coinciden";
 			}
 
 			if ($_FILES[$archivo]['error'] != UPLOAD_ERR_OK) { // Si no subieron ninguna imagen
-				$errores['avatar'] = "Che subí una foto";
+				$errores['avatar'] = "Por favor subí tu avatar";
 			} else {
 				$ext = strtolower(pathinfo($_FILES[$archivo]['name'], PATHINFO_EXTENSION));
 

@@ -14,13 +14,13 @@
 </head>
 
 <body class="align-middle">
-	<h1><?= (isset($message)) ? $message : null?></h1>
+	<h1><?= (isset($message)) ? $message : NULL?></h1>
   <body>
     <div class="container">
       <header>
     		<div class="logo">
     			<img src="images/logo-farmacia.png" width="150" alt="">
-    		    <a href="#">FARMACIAS DE TURNO</a>
+    		    <a href="#">FARMACIA DE TURNO</a>
     		</div>
     		<nav>
     			<a href="./ingresar.php">No tienes una DB creada</a>

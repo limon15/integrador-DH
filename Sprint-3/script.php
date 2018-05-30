@@ -70,8 +70,11 @@
 
 				$usuarios = $dbJSON->traerTodos();
 
+				// echo "<pre>";
+				// var_dump($usuarios); exit;
+
 				foreach ($usuarios as $unUsuario) {
-					$sql = "USE FarmaciaDB; INSERT INTO users(name, apellidos, correo, usuario, telefono, clave, avatar)
+					$sql = "INSERT INTO users(name, last_name, email, user, phone, pass, avatar)
 					VALUES (:name, :last_name, :email, :user, :phone, :pass, :avatar)";
 					$stmt= $conn->prepare($sql);
 					$stmt->bindValue(":name", $unUsuario->getName());
