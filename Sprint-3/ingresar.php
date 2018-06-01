@@ -60,7 +60,7 @@
       <header>
     		<div class="logo">
     			<img src="images/logo-farmacia.png" width="150" alt="">
-    		    <a href="#">FARMACIAS DE TURNO</a>
+    		    <a href="#">FARMACIA DE TURNO</a>
     		</div>
     		<nav>
     			<a href="./ingresar.php">Inicio</a>
