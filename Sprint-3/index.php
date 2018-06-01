@@ -81,7 +81,7 @@
 		</header>
     <div class="bienvenida">
       <h2 class="bienvenida-titulo">¡BIENVENIDO!</h2>
-        <p class="bienvenida-parrafo">¿Buscás la farmacia de turno más cercada a tu domicilio?
+        <p class="bienvenida-parrafo">¿Buscás la farmacia de turno más cercanas a tu domicilio?
         <br>Estás es el lugar correcto. Pero antes que nada, <a class="bienvenida-a" href="ingresar.php">iniciá sesión</a> o <a  class="bienvenida-a" href="#CrearCuenta">registrate.</a></p>
     </div>
     <a name="CrearCuenta" id="c"></a>
