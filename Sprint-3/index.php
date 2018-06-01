@@ -30,11 +30,11 @@
 
 	if (empty($errores)) {
 
-		$errores = $db->guardarImagen('avatar', $correo);
+		$errores = $db->guardarImagen('avatar', $_POST['correo']);
 
 		if (empty($errores)) {
 			$ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-			$avatar = 'img/' . $correo . '.' . $ext;
+			$avatar = 'img/' .  $_POST['correo']. '.' . $ext;
 
 			$usuario = new Usuario($_POST["name"], $_POST["apellidos"], $_POST["correo"], $_POST["usuario"], $_POST["telefono"],$_POST["clave"], $avatar);
 
@@ -94,32 +94,32 @@
 						</div>
 
 						<div class="formu-control">
-		        	<input type="text" name="apellidos" placeholder="Apellidos" class="<?= isset($errores['apellidos']) ? 'input-error' : NULL ?>" value="<?php $validator->persistirDato('apellidos') ?>">
+							<input type="text" name="apellidos" placeholder="Nombres" class="<?= isset($errores['apellidos']) ? 'input-error' : NULL ?>" value="<?= $validator->persistirDato('apellidos') ?>">
 							<span class="error-text" style="<?= isset($errores['apellidos']) ? 'display: block;' : NULL ?>"><?= isset($errores['apellidos']) ? $errores['apellidos'] : NULL ?></span>
 						</div>
 
 						<div class="formu-control">
-		        	<input type="email" name="correo" placeholder="Email" class="<?= isset($errores['correo']) ? 'input-error' : NULL ?>" value="<?php $validator->persistirDato('correo') ?>">
+		        	<input type="email" name="correo" placeholder="Email" class="<?= isset($errores['correo']) ? 'input-error' : NULL ?>" value="<?= $validator->persistirDato('correo') ?>">
 							<span class="error-text" style="<?= isset($errores['correo']) ? 'display: block;' : NULL ?>"><?= isset($errores['correo']) ? $errores['correo'] : NULL ?></span>
 						</div>
 
 						<div class="formu-control">
-							<input type="text" name="usuario" placeholder="Usuario" class="<?= isset($errores['usuario']) ? 'input-error' : NULL ?>" value="<?php $validator->persistirDato('usuario') ?>">
+							<input type="text" name="usuario" placeholder="Usuario" class="<?= isset($errores['usuario']) ? 'input-error' : NULL ?>" value="<?= $validator->persistirDato('usuario') ?>">
 							<span class="error-text" style="<?= isset($errores['usuario']) ? 'display: block;' : NULL ?>"><?= isset($errores['usuario']) ? $errores['usuario'] : NULL ?></span>
 						</div>
 
 						<div class="formu-control">
-							<input type="password" name="clave" placeholder="Contraseña" class="<?= isset($errores['clave']) ? 'input-error' : NULL ?>" value="<?php $validator->persistirDato('clave')?>">
+							<input type="password" name="clave" placeholder="Contraseña" class="<?= isset($errores['clave']) ? 'input-error' : NULL ?>" value="<?= $validator->persistirDato('clave')?>">
 							<span class="error-text" style="<?= isset($errores['clave']) ? 'display: block;' : NULL ?>"><?= isset($errores['clave']) ? $errores['clave'] : NULL ?></span>
 						</div>
 
 						<div class="formu-control">
-							<input type="password" name="rclave" placeholder="Volvé a ingresar tu contraseña" class="<?= isset($errores['clave']) ? 'input-error' : NULL ?>" value="<?php $validator->persistirDato('rclave')?>">
+							<input type="password" name="rclave" placeholder="Volvé a ingresar tu contraseña" class="<?= isset($errores['clave']) ? 'input-error' : NULL ?>" value="<?= $validator->persistirDato('rclave')?>">
 							<span class="error-text" style="<?= isset($errores['clave']) ? 'display: block;' : NULL ?>"><?= isset($errores['clave']) ? $errores['clave'] : NULL ?></span>
 						</div>
 
 						<div class="formu-control">
-							<input type="tel" name="telefono" placeholder="Teléfono de contacto" class="<?= isset($errores['telefono']) ? 'input-error' : NULL ?>" value="<?php $validator->persistirDato('telefono')?>">
+							<input type="tel" name="telefono" placeholder="Teléfono de contacto" class="<?= isset($errores['telefono']) ? 'input-error' : NULL ?>" value="<?= $validator->persistirDato('telefono')?>">
 							<span class="error-text" style="<?= isset($errores['telefono']) ? 'display: block;' : NULL ?>"><?= isset($errores['telefono']) ? $errores['telefono'] : NULL ?></span>
 						</div>
 
